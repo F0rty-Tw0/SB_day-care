@@ -1,40 +1,55 @@
 package com.example.day_care.Model;
 
-public abstract class Employee {
-    private String role;
-    private String name;
-    private long phoneNumber;
+import org.springframework.data.annotation.Id;
+import javax.persistence.Entity;
 
-    public String getRole() {
-        return role;
+@Entity
+public class Employee {
+    @Id
+    private int empId;
+    private String empName;
+    private String empSchedule;
+    private long empPhoneNr;
+    private String empRole;
+
+    public String getEmpName() {
+        return empName;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setEmpName(String empName) {
+        this.empName = empName;
     }
 
-    public String getName() {
-        return name;
+    public String getEmpSchedule() {
+        return empSchedule;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setEmpSchedule(String empSchedule) {
+        this.empSchedule = empSchedule;
     }
 
-    public long getPhoneNumber() {
-        return phoneNumber;
+    public long getEmpPhoneNr() {
+        return empPhoneNr;
     }
 
-    public void setPhoneNumber(long phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setEmpPhoneNr(long empPhoneNr) {
+        this.empPhoneNr = empPhoneNr;
     }
 
-    // R - VIEW
-    abstract public void viewParents();
+    public String getEmpRole() {
+        return empRole;
+    }
 
-    abstract public void viewChildren();
+    public void setEmpRole(String empRole) {
+        this.empRole = empRole;
+    }
 
-    abstract public void viewGroups();
+    public void setEmpId(int empId) {
+        this.empId = empId;
+    }
 
-    abstract public void viewSchedule();
+    @javax.persistence.Id
+    public int getEmpId() {
+        return empId;
+    }
 }

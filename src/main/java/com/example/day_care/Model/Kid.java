@@ -1,14 +1,28 @@
 package com.example.day_care.Model;
 
+import org.springframework.data.annotation.Id;
+import javax.persistence.Entity;
+
+@Entity
 public class Kid {
-    private int kidAge;
+    @Id
+    private int kidId;
     private String kidName;
+    private int kidAge;
 
     public Kid() {
     }
 
     public Kid(int kidAge, String kidName) {
         this.kidAge = kidAge;
+        this.kidName = kidName;
+    }
+
+    public String getKidName() {
+        return kidName;
+    }
+
+    public void setKidName(String kidName) {
         this.kidName = kidName;
     }
 
@@ -20,11 +34,12 @@ public class Kid {
         this.kidAge = kidAge;
     }
 
-    public String getKidName() {
-        return kidName;
+    public void setKidId(int kidId) {
+        this.kidId = kidId;
     }
 
-    public void setKidName(String kidName) {
-        this.kidName = kidName;
+    @javax.persistence.Id
+    public int getKidId() {
+        return kidId;
     }
 }

@@ -1,10 +1,17 @@
 package com.example.day_care.Model;
 
-public class Parents {
+import org.springframework.data.annotation.Id;
+
+import javax.persistence.Entity;
+
+@Entity
+public class Parent {
+    @Id
+    private int parentId;
     private String momName;
     private String dadName;
     private int phoneNumber;
-    private String adress;
+    private String address;
 
     public String getMomName() {
         return momName;
@@ -30,11 +37,20 @@ public class Parents {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setParentId(int parentId) {
+        this.parentId = parentId;
+    }
+
+    @javax.persistence.Id
+    public int getParentId() {
+        return parentId;
     }
 }

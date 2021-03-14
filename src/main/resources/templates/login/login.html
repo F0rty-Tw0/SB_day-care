@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Search for a City | HOME</title>
+    <meta name="description" content="Learning Spring | HOME">
+    <meta name="author" content="Art">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <div id="container">
+        <form action="#" th:action="@{/login}" th:object="${myLogin}" method="post">
+            <h1 th:object="${wrongCredentials}"  th:if="${wrongCredentials == null}">Log in with your credentials</h1>
+            <h1 th:object="${wrongCredentials}" th:if="${wrongCredentials}">You entered wrong credentials</h1>
+            <input th:field="*{userName}" placeholder="User Name" type="text">
+            <input th:field="*{userPassword}" placeholder="Password" type="password" autocomplete="off">
+            <button id="btnintext" type="submit"><i class="fas fa-search"></i></button>
+        </form>
+    </div>
+</body>
+
+</html>
