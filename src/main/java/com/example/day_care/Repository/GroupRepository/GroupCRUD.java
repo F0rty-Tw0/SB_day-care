@@ -31,6 +31,15 @@ public class GroupCRUD implements InterfaceGroup {
         return myGroup;
     };
 
+    @Override
+    public Group sellectLastGroup() {
+        String sql = "SELECT * FROM xGroups ORDER BY grpId DESC LIMIT 1";
+        RowMapper<Group> rowMapper = new BeanPropertyRowMapper<>(Group.class);
+        Group myGroup = jdbcTemplate.queryForObject(sql, rowMapper);
+        return myGroup;
+    };
+
+    @Override
     public List<Group> viewAllGroups() {
         String sql = "SELECT * FROM xGroups";
         RowMapper<Group> rowMapper = new BeanPropertyRowMapper<>(Group.class);
@@ -40,6 +49,8 @@ public class GroupCRUD implements InterfaceGroup {
     // UPDATE
     @Override
     public Group editGroup(int grpId, Group myGroup) {
+        String sql = "UPDATE xGroups SET grpName=? WHERE grpId=?";
+        jdbcTemplate.update(sql, myGroup.getGrpName(), grpId);
         return null;
     };
 

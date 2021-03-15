@@ -1,24 +1,24 @@
 package com.example.day_care.Service.LoginService;
 
 public class LoginService {
-    private String userName;
-    private String userPassword;
+    public String inputUserName;
+    public String inputUserPassword;
     private boolean validated;
 
-    public String getUserName() {
-        return userName;
+    public String getInputUserName() {
+        return inputUserName;
     }
 
-    public String getUserPassword() {
-        return userPassword;
+    public String getInputUserPassword() {
+        return inputUserPassword;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setInputUserName(String inputUserName) {
+        this.inputUserName = inputUserName;
     }
 
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
+    public void setInputUserPassword(String inputUserPassword) {
+        this.inputUserPassword = inputUserPassword;
     }
 
     public boolean isValidated() {
@@ -26,7 +26,7 @@ public class LoginService {
     }
 
     public void setValidated(String envUserName, String envUserPassword) {
-        if (userName.equals(envUserName) && userPassword.equals(envUserPassword)) {
+        if (getInputUserName().equals(envUserName) && getInputUserPassword().equals(envUserPassword)) {
             this.validated = true;
         }
     }

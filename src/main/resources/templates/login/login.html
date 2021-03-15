@@ -18,8 +18,8 @@
         <form action="#" th:action="@{/login}" th:object="${myLogin}" method="post">
             <h1 th:object="${wrongCredentials}"  th:if="${wrongCredentials == null}">Log in with your credentials</h1>
             <h1 th:object="${wrongCredentials}" th:if="${wrongCredentials}">You entered wrong credentials</h1>
-            <input th:field="*{userName}" placeholder="User Name" type="text">
-            <input th:field="*{userPassword}" placeholder="Password" type="password" autocomplete="off">
+            <input th:field="*{inputUserName}" placeholder="User Name" type="text">
+            <input th:field="*{inputUserPassword}" placeholder="Password" type="password" autocomplete="off">
             <button id="btnintext" type="submit"><i class="fas fa-search"></i></button>
         </form>
     </div>

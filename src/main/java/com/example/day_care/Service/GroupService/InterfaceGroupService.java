@@ -12,6 +12,8 @@ public interface InterfaceGroupService {
     // READ
     public Group findGroupById(int grpId);
 
+    public Group sellectLastGroup();
+
     public List<Group> viewAllGroups();
 
     // UPDATE

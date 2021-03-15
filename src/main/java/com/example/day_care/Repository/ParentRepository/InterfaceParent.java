@@ -11,6 +11,8 @@ public interface InterfaceParent {
     // READ
     public Parent findParentById(int parrentId);
 
+    public Parent sellectLastParent();
+
     public List<Parent> viewAllParents();
 
     // UPDATE

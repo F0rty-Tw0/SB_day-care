@@ -9,6 +9,7 @@ public class Kid {
     private int kidId;
     private String kidName;
     private int kidAge;
+    private int kidParentId;
 
     public Kid() {
     }
@@ -32,6 +33,14 @@ public class Kid {
 
     public void setKidAge(int kidAge) {
         this.kidAge = kidAge;
+    }
+
+    public int getKidParentId() {
+        return kidParentId;
+    }
+
+    public void setKidParentId(int kidParentId) {
+        this.kidParentId = kidParentId;
     }
 
     public void setKidId(int kidId) {

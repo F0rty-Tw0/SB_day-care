@@ -20,7 +20,11 @@
       <input th:field="*{cityZipCode}" placeholder="Enter a zip code: 1662" type="text">
       <button id="btnintext" type="submit"><i class="fas fa-search"></i></button>
     </form> -->
-    <a th:href="@{/login}" id="btnintext" >Log In<i class="fas fa-search"></i></a>
+    <a th:href="@{/login}" id="btnintext">Log In<i class="fas fa-search"></i></a>
+
+    <div th:each="kid : ${myKids}">
+      <p th:text="${kid.getKidName()}"></p>
+    </div>
   </div>
 </body>
 

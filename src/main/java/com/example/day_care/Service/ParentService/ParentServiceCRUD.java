@@ -24,6 +24,12 @@ public class ParentServiceCRUD implements InterfaceParentService {
         return interfaceParent.findParentById(parentId);
     };
 
+    @Override
+    public Parent sellectLastParent() {
+        return interfaceParent.sellectLastParent();
+    };
+
+    @Override
     public List<Parent> viewAllParents() {
         return interfaceParent.viewAllParents();
     };

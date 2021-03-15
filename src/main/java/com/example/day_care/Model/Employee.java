@@ -11,6 +11,7 @@ public class Employee {
     private String empSchedule;
     private long empPhoneNr;
     private String empRole;
+    private int empGrpId;
 
     public String getEmpName() {
         return empName;
@@ -42,6 +43,14 @@ public class Employee {
 
     public void setEmpRole(String empRole) {
         this.empRole = empRole;
+    }
+
+    public int getEmpGrpId() {
+        return empGrpId;
+    }
+
+    public void setEmpGrpId(int empGrpId) {
+        this.empGrpId = empGrpId;
     }
 
     public void setEmpId(int empId) {

@@ -17,8 +17,8 @@ public class KidCRUD implements InterfaceKid {
     // CREATE
     @Override
     public Kid addKid(Kid myKid) {
-        String sql = "INSERT INTO kids(kidName, kidAge) VALUES(?,?)";
-        jdbcTemplate.update(sql, myKid.getKidName(), myKid.getKidAge());
+        String sql = "INSERT INTO kids(kidName, kidAge, kidParentId) VALUES(?,?,?)";
+        jdbcTemplate.update(sql, myKid.getKidName(), myKid.getKidAge(), myKid.getKidParentId());
         return null;
     };
 
@@ -31,6 +31,7 @@ public class KidCRUD implements InterfaceKid {
         return myKid;
     };
 
+    @Override
     public List<Kid> viewAllKids() {
         String sql = "SELECT * FROM kids";
         RowMapper<Kid> rowMapper = new BeanPropertyRowMapper<>(Kid.class);
@@ -40,6 +41,8 @@ public class KidCRUD implements InterfaceKid {
     // UPDATE
     @Override
     public Kid editKid(int kidId, Kid myKid) {
+        String sql = "UPDATE kids SET kidName, kidAge, kidParentId WHERE kidId=?";
+        jdbcTemplate.update(sql, myKid.getKidName(), myKid.getKidAge(), myKid.getKidParentId(), kidId);
         return null;
     };
 

@@ -24,6 +24,12 @@ public class GroupServiceCRUD implements InterfaceGroupService {
         return interfaceGroup.findGroupById(grpId);
     };
 
+    @Override
+    public Group sellectLastGroup() {
+        return interfaceGroup.sellectLastGroup();
+    };
+
+    @Override
     public List<Group> viewAllGroups() {
         return interfaceGroup.viewAllGroups();
     };

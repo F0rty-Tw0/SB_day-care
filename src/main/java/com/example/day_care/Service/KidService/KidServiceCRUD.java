@@ -24,6 +24,7 @@ public class KidServiceCRUD implements InterfaceKidService {
         return interfaceKid.findKidById(kidId);
     };
 
+    @Override
     public List<Kid> viewAllKids() {
         return interfaceKid.viewAllKids();
     };

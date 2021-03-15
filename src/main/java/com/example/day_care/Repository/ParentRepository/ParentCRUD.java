@@ -32,6 +32,15 @@ public class ParentCRUD implements InterfaceParent {
         return myParent;
     };
 
+    @Override
+    public Parent sellectLastParent() {
+        String sql = "SELECT * FROM parents ORDER BY parentId DESC LIMIT 1";
+        RowMapper<Parent> rowMapper = new BeanPropertyRowMapper<>(Parent.class);
+        Parent myParent = jdbcTemplate.queryForObject(sql, rowMapper);
+        return myParent;
+    };
+
+    @Override
     public List<Parent> viewAllParents() {
         String sql = "SELECT * FROM parents";
         RowMapper<Parent> rowMapper = new BeanPropertyRowMapper<>(Parent.class);
@@ -41,6 +50,9 @@ public class ParentCRUD implements InterfaceParent {
     // UPDATE
     @Override
     public Parent editParent(int parrentId, Parent myParent) {
+        String sql = "UPDATE parents SET momName=?, dadName=?, phoneNumber=?, address=? WHERE parrentId=?";
+        jdbcTemplate.update(sql, myParent.getMomName(), myParent.getDadName(), myParent.getPhoneNumber(),
+                myParent.getAddress(), parrentId);
         return null;
     };
 

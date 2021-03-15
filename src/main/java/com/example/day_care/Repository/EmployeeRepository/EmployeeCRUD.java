@@ -17,9 +17,9 @@ public class EmployeeCRUD implements InterfaceEmployee {
     // CREATE
     @Override
     public Employee addEmployee(Employee myEmployee) {
-        String sql = "INSERT INTO employees(empName, empSchedule, empPhoneNr, empRole) VALUES(?,?,?,?)";
+        String sql = "INSERT INTO employees(empName, empSchedule, empPhoneNr, empRole, empGrpId) VALUES(?,?,?,?,?)";
         jdbcTemplate.update(sql, myEmployee.getEmpName(), myEmployee.getEmpSchedule(), myEmployee.getEmpPhoneNr(),
-                myEmployee.getEmpRole());
+                myEmployee.getEmpRole(), myEmployee.getEmpGrpId());
         return null;
     };
 
@@ -32,6 +32,7 @@ public class EmployeeCRUD implements InterfaceEmployee {
         return myEmployee;
     };
 
+    @Override
     public List<Employee> viewAllEmployees() {
         String sql = "SELECT * FROM employees";
         RowMapper<Employee> rowMapper = new BeanPropertyRowMapper<>(Employee.class);
@@ -41,6 +42,9 @@ public class EmployeeCRUD implements InterfaceEmployee {
     // UPDATE
     @Override
     public Employee editEmployee(int empId, Employee myEmployee) {
+        String sql = "UPDATE employees SET empName=?, empSchedule=?, empPhoneNr=?, empRole=?, empGrpId=? WHERE empId=?";
+        jdbcTemplate.update(sql, myEmployee.getEmpName(), myEmployee.getEmpSchedule(), myEmployee.getEmpPhoneNr(),
+                myEmployee.getEmpRole(), myEmployee.getEmpGrpId(), empId);
         return null;
     };
 

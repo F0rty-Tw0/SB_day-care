@@ -1,6 +1,8 @@
 package com.example.day_care.Controller;
 
+import java.util.List;
 import com.example.day_care.Model.Kid;
+import com.example.day_care.Service.KidService.InterfaceKidService;
 import com.example.day_care.Service.LoginService.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -17,6 +19,9 @@ public class PageController {
     JdbcTemplate jdbcTemplate;
     @Autowired
     private Environment environment;
+    @Autowired
+    private InterfaceKidService interfaceKidService;
+
     // Admin state
     private boolean isValidated;
 
@@ -24,18 +29,18 @@ public class PageController {
     public String Error() {
         return "error";
     }
+    // jdbcTemplate.execute("CREATE TABLE kids (" + "kidId SERIAL, kidName VARCHAR(50), kidAge INT)");
 
     @GetMapping("/")
     public String Index(Model model) {
-        Kid kid = new Kid();
-
-        model.addAttribute("myKid", kid);
-        // jdbcTemplate.execute("ALTER TABLE kids ADD COLUMN kidGrpId VARCHAR(15) AFTER
-        // kidName");
-        // kid.setKidAge(13);
-        // kid.setKidName("Juan");
-        // jdbcTemplate.update("INSERT INTO kids(kidAge, kidName) VALUES (?,?)",
-        // kid.getKidAge(), kid.getKidName());
+        List<Kid> kidList = interfaceKidService.viewAllKids();
+        model.addAttribute("myKids", kidList);
+       
+        // Kid kid = new Kid();
+        // kid.setKidAge(2);
+        // kid.setKidName("Jessica Alba");
+        // jdbcTemplate.update("INSERT INTO kids(kidName, kidAge) VALUES (?,?)",
+        // kid.getKidName(), kid.getKidAge());
 
         // String name = "Maria";
         // String sql = "SELECT kidId, kidAge, kidName FROM kids WHERE kidName =
@@ -56,8 +61,9 @@ public class PageController {
 
     @PostMapping("/login")
     public String LoginPost(Model model, @ModelAttribute("myLogin") LoginService myLogin) {
-        myLogin.setValidated(environment.getProperty("admin.userName"), environment.getProperty("admin.userPassword"));
-
+        String adminUsername = environment.getProperty("admin.userName");
+        String adminPassword = environment.getProperty("admin.userPassword");
+        myLogin.setValidated(adminUsername, adminPassword);
         if (myLogin.isValidated()) {
             isValidated = true;
             return "redirect:/admin";
