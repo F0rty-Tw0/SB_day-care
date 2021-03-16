@@ -33,8 +33,8 @@ public class PageController {
 
     @GetMapping("/")
     public String Index(Model model) {
-        List<Kid> kidList = interfaceKidService.viewAllKids();
-        model.addAttribute("myKids", kidList);
+        // List<Kid> kidList = interfaceKidService.viewAllKids();
+        // model.addAttribute("myKids", kidList);
        
         // Kid kid = new Kid();
         // kid.setKidAge(2);
