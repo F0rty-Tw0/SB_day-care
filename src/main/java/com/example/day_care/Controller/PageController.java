@@ -35,7 +35,10 @@ public class PageController {
     public String Index(Model model) {
         List<Kid> kidList = interfaceKidService.viewAllKids();
         model.addAttribute("myKids", kidList);
-       
+
+        // Adrian's comment
+
+
         // Kid kid = new Kid();
         // kid.setKidAge(2);
         // kid.setKidName("Jessica Alba");
