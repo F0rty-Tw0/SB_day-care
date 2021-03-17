@@ -1,71 +1,102 @@
 body {
-	background: linear-gradient(to top, rgb(180, 144, 202) 0%, rgb(94, 231, 223) 100%);
+	font-family: 'Baloo 2', cursive;
+	font-weight: 800;
+	background-image: url("/images/background.webp");
 	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-color: #f8f9fa;
 }
 
-/* h1 {
-	margin: 0;
-	padding: 10px 20px;
-	background: rgb(110, 109, 181);
-	color: white;
-	text-transform: uppercase;
-	font-size: 26px;
-	font-weight: normal;
+/* TEXT */
+.text__color-pink,
+.active {
+	color: #ff6f96 !important;
 }
 
-input {
-	font-size: 20px;
-	background: #f1f5ea;
-	border: 3px solid rgba(110, 109, 181);
-	color: rgb(110, 109, 181);
-	width: 100%;
-	padding: 10px 10px 10px 20px;
-	box-sizing: border-box;
+.text__color-blue {
+	color: #32355d !important;
 }
 
-input:focus {
-	background: #f1f5ea;
-	border: 3px solid rgb(110, 109, 181);
-	outline: none;
+.text__color-gray {
+	color: #757678;
 }
 
-button {
-	background-color: transparent;
-	border-color: transparent;
+/* NAVBAR */
+.navbar,
+.navbar-brand {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+.nav-item {
+	font-size: 24px;
+}
+.nav-item:hover {
+	background-color: #ff6f96;
+	transition: background-color 0.5s ease;
+}
+.active:hover {
+	background-color: #32355d;
+	transition: background-color 0.5s ease;
+}
+.navbar-brand {
+	font-size: 36px;
 }
 
-button:focus {
-	outline: transparent;
-}
-
-a {
-	color: rgb(61, 34, 78);
-	text-decoration: none;
-	font-size: 20px;
-	padding: 0 153px;
-}
-
-#container {
-	width: 350px;
-	margin: 150px auto;
-	background: #f1f5ea;
-	box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
-}
-
-#btnintext {
+/* CARDS */
+.main__page-card {
 	position: absolute;
-	margin-left: -40px;
-	padding-top: 10px;
+	left: 15%;
+	top: 40vh;
+}
+.main__page-card h1 {
+	width: 60%;
+	font-size: 68px;
+}
+.main__page-card h2 {
+	font-size: 40px;
 }
 
-#btnintext i {
-	font-size: 25px;
-	color: rgb(110, 109, 181);
-	cursor: pointer;
+/* LOGIN */
+.login__container {
+	position: absolute;
+	width: 20%;
+	left: 15%;
+	top: 40vh;
 }
 
-#result {
-	color: rgb(110, 109, 181);
-	font-size: 26px;
-	padding: 0px 20px 10px 20px;
-} */
+.login__container h1 {
+	font-size: 68px;
+}
+
+.login__container h2 {
+	font-size: 40px;
+}
+
+.login__buton {
+	margin-right: 60px;
+}
+
+.login__wrong-login {
+	font-size: 62px !important;
+}
+
+.logout_button {
+	background-color: transparent;
+	font-weight: 800;
+	border: none;
+}
+/* FOOTER */
+footer {
+	background-color: #f8f9fa;
+	position: absolute;
+	text-align: center;
+	width: 100%;
+	bottom: 0;
+	height: 30px;
+	padding-top: 5px;
+}
+
+footer a {
+	text-decoration: none;
+}

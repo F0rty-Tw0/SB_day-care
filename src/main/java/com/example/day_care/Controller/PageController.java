@@ -1,6 +1,9 @@
 package com.example.day_care.Controller;
 
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 import com.example.day_care.Model.Kid;
 import com.example.day_care.Service.KidService.InterfaceKidService;
 import com.example.day_care.Service.LoginService.LoginService;
@@ -12,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class PageController {
@@ -29,19 +33,19 @@ public class PageController {
     public String Error() {
         return "error";
     }
-    // jdbcTemplate.execute("CREATE TABLE kids (" + "kidId SERIAL, kidName VARCHAR(50), kidAge INT)");
+    // jdbcTemplate.execute("CREATE TABLE kids (" + "kidId SERIAL, kidName
+    // VARCHAR(50), kidAge INT)");
 
     @GetMapping("/")
-    public String Index(Model model) {
+    public String Index(Model model, HttpSession session) {
         // List<Kid> kidList = interfaceKidService.viewAllKids();
         // model.addAttribute("myKids", kidList);
-       
         // Kid kid = new Kid();
         // kid.setKidAge(2);
         // kid.setKidName("Jessica Alba");
         // jdbcTemplate.update("INSERT INTO kids(kidName, kidAge) VALUES (?,?)",
         // kid.getKidName(), kid.getKidAge());
-
+        session.setAttribute("isValidated", isValidated);
         // String name = "Maria";
         // String sql = "SELECT kidId, kidAge, kidName FROM kids WHERE kidName =
         // \""+name+"\"";
@@ -53,19 +57,20 @@ public class PageController {
     }
 
     @GetMapping("/login")
-    public String Login(Model model) {
+    public String Login(Model model, HttpSession session) {
         LoginService login = new LoginService();
         model.addAttribute("myLogin", login);
         return "login/login";
     }
 
     @PostMapping("/login")
-    public String LoginPost(Model model, @ModelAttribute("myLogin") LoginService myLogin) {
+    public String LoginPost(Model model, @ModelAttribute("myLogin") LoginService myLogin, HttpSession session) {
         String adminUsername = environment.getProperty("admin.userName");
         String adminPassword = environment.getProperty("admin.userPassword");
         myLogin.setValidated(adminUsername, adminPassword);
         if (myLogin.isValidated()) {
             isValidated = true;
+            session.setAttribute("isValidated", isValidated);
             return "redirect:/admin";
         } else {
             model.addAttribute("wrongCredentials", true);
@@ -74,8 +79,9 @@ public class PageController {
     }
 
     @GetMapping("/admin")
-    public String Admin() {
+    public String Admin(Model model, HttpSession session) {
         if (isValidated) {
+            model.addAttribute("isValidated", isValidated);
             return "admin/admin";
         } else {
             return "redirect:/login";

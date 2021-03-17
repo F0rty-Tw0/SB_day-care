@@ -1,62 +1,18 @@
 <!doctype html>
 <html lang="en">
 
-<head>
-  <meta charset="utf-8">
-
-  <title>Search for a City | HOME</title>
-  <meta name="description" content="Learning Spring | HOME">
-  <meta name="author" content="Art">
-  <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.0.0-beta2/css/bootstrap.min.css} " />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
-    integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
-    crossorigin="anonymous" />
-  <link rel="stylesheet" href="/css/styles.css">
-</head>
+<head th:include="shared/head :: head (pageTitle='Main Page')" />
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-      <a class="navbar-brand" href="#">Day Care</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Page 1</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              Dropdown
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
-        </ul>
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link" th:href="@{/login}" tabindex="-1" aria-disabled="true">Log In</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <div th:each="kid : ${myKids}">
-    <p th:text="${kid.getKidName()}"></p>
+  <div th:include="shared/navbar :: navbar (active='index')" />
+
+  <div class="main__page-card">
+    <h1 class="text__color-blue">We are childcare professionals</h1>
+    <h2 class="text__color-gray mb-2">We'll take care of them together</h2>
   </div>
-  <script th:src="@{/webjars/bootstrap/5.0.0-beta2/js/bootstrap.bundle.min.js}"></script>
+  </div>
+
+  <footer th:include="shared/footer :: footer" />
 </body>
 
 </html>
