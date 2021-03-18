@@ -16,7 +16,7 @@ body {
 	z-index: 100;
 	width: 100vw;
 	height: 100vh;
-	background-color: rgba(49, 49, 49, 0.555);
+	background-color: rgba(33 30 45 / 45%);
 	background-image: url("/images/loading.svg");
 	background-repeat: no-repeat;
 	background-position: center;
@@ -88,8 +88,8 @@ body {
 /* CARDS */
 .main__page-card {
 	position: absolute;
-	left: 15%;
-	top: 40vh;
+	left: 8vw;
+	top: 30vh;
 }
 .main__page-card h1 {
 	width: 60%;
@@ -102,9 +102,9 @@ body {
 /* LOGIN */
 .login__container {
 	position: absolute;
-	width: 20%;
-	left: 15%;
-	top: 40vh;
+	width: 515px;
+	left: 5vw;
+	top: 30vh;
 }
 
 .login__container h1 {

@@ -4,13 +4,11 @@ const onReady = (callback) => {
 			window.clearInterval(intervalId);
 			callback.call(this);
 		}
-	}, 350);
+	}, 450);
 };
 
 const setVisible = (selector, visible) => {
-	document.querySelector(selector).style.display =
-		visible ? 'block' :
-		'none';
+	document.querySelector(selector).style.display = visible ? 'block' : 'none';
 };
 
 onReady(() => {
