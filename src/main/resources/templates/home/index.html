@@ -1,18 +1,20 @@
 <!doctype html>
 <html lang="en">
 
-<head th:include="shared/head :: head (pageTitle='Main Page')" />
+  <head th:include="shared/head :: head (pageTitle='Main Page')" />
 
-<body>
-  <div th:include="shared/navbar :: navbar (active='index')" />
+  <body>
+    <div class="page">
+      <div th:include="shared/navbar :: navbar (active='index')" />
 
-  <div class="main__page-card">
-    <h1 class="text__color-blue">We are childcare professionals</h1>
-    <h2 class="text__color-gray mb-2">We'll take care of them together</h2>
-  </div>
-  </div>
+      <div class="main__page-card">
+        <h1 class="text__color-blue">We are childcare professionals</h1>
+        <h2 class="text__color-gray mb-2">We'll take care of them together</h2>
+      </div>
+    </div>
 
-  <footer th:include="shared/footer :: footer" />
-</body>
+    <footer th:include="shared/footer :: footer" />
+    </div>
+  </body>
 
 </html>

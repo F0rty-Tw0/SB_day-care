@@ -1,12 +1,15 @@
 <!doctype html>
 <html lang="en">
-<head th:include="shared/head :: head (pageTitle='Admin Page')" />
 
-<body>
-    <div th:include="shared/navbar :: navbar (active='admin')" />
-    <div id="container">
-        IM ADMIN
-    </div>
-</body>
+    <head th:include="shared/head :: head (pageTitle='Admin Page')" />
+
+    <body>
+        <div class="page">
+            <div th:include="shared/navbar :: navbar (active='admin')" />
+            <div id="container">
+                IM ADMIN
+            </div>
+        </div>
+    </body>
 
 </html>

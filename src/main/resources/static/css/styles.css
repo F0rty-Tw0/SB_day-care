@@ -8,10 +8,25 @@ body {
 	background-color: #f8f9fa;
 }
 
+#loading {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(49, 49, 49, 0.555);
+	background-image: url("/images/loading.svg");
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
 /* TEXT */
-.text__color-pink,
+.text_color-pink,
 .active {
 	color: #ff6f96 !important;
+	background-color: transparent;
 }
 
 .text__color-blue {
@@ -28,19 +43,43 @@ body {
 	padding-top: 0;
 	padding-bottom: 0;
 }
+
 .nav-item {
+	z-index: 1;
 	font-size: 24px;
 }
-.nav-item:hover {
-	background-color: #ff6f96;
-	transition: background-color 0.5s ease;
+
+.nav-link::after,
+.active::after {
+	opacity: 0;
+	content: '';
+	width: 0px;
+	height: 6px;
+	border-radius: 8px;
+	display: block;
+	transition: 200ms;
 }
-.active:hover {
-	background-color: #32355d;
-	transition: background-color 0.5s ease;
+
+.nav-link::after {
+	background: #ff6f96;
 }
+
+.active::after {
+	background: #32355d;
+}
+
+.active:hover::after {
+	opacity: 1;
+	width: 100%;
+}
+
+.nav-link:hover::after {
+	opacity: 1;
+	width: 100%;
+}
+
 .navbar-brand {
-	font-size: 36px;
+	font-size: 50px;
 }
 
 /* CARDS */

@@ -1,32 +1,36 @@
 <!doctype html>
 <html lang="en">
 
-<head th:include="shared/head :: head (pageTitle='Login Page')" />
+    <head th:include="shared/head :: head (pageTitle='Login Page')" />
 
-<body>
-    <div th:include="shared/navbar :: navbar (active='login')" />
+    <body>
+        <div class="page">
+            <div th:include="shared/navbar :: navbar (active='login')" />
 
-    <form action="#" th:action="@{/login}" th:object="${myLogin}" method="post">
-        <div class="login__container">
-            <h1 class="login__wrong-login text-danger" th:object="${wrongCredentials}" th:if="${wrongCredentials}">You entered wrong credentials</h1>
-            <h1 th:object="${wrongCredentials}" th:if="${wrongCredentials == null}">Log
-                in
-                with your credentials</h1>
-            <div class="input-group">
-                <div class="mb-3 me-2">
-                    <label for="exampleInputEmail1" class="form-label text__color-pink">Account Name</label>
-                    <input class="form-control" th:field="*{inputUserName}" placeholder="User Name" type="text">
+            <form action="#" th:action="@{/login}" th:object="${myLogin}" method="post">
+                <div class="login__container">
+                    <h1 class="login__wrong-login text-danger" th:object="${wrongCredentials}"
+                        th:if="${wrongCredentials}">
+                        You entered wrong credentials</h1>
+                    <h1 class="text__color-blue" th:object="${wrongCredentials}" th:if="${wrongCredentials == null}">Log
+                        in
+                        with your credentials</h1>
+                    <div class="input-group">
+                        <div class="mb-3 me-2">
+                            <label class="form-label text_color-pink">Account Name</label>
+                            <input class="form-control" th:field="*{inputUserName}" placeholder="User Name" type="text">
+                        </div>
+                        <div class="mb-3 ">
+                            <label class="form-label text_color-pink">Password</label>
+                            <input class="form-control" th:field="*{inputUserPassword}" placeholder="Password"
+                                type="password" autocomplete="off">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary float-end login__buton">Submit</button>
                 </div>
-                <div class="mb-3 ">
-                    <label for="exampleInputPassword1" class="form-label text__color-pink">Password</label>
-                    <input class="form-control" th:field="*{inputUserPassword}" placeholder="Password" type="password"
-                        autocomplete="off">
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary float-end login__buton">Submit</button>
+            </form>
+            <footer th:include="shared/footer :: footer" />
         </div>
-    </form>
-    <footer th:include="shared/footer :: footer" />
-</body>
+    </body>
 
 </html>
