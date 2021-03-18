@@ -3,7 +3,7 @@ package com.example.day_care.Model;
 import org.springframework.data.annotation.Id;
 
 import javax.persistence.Entity;
-
+//d
 @Entity
 public class Group {
     @Id
