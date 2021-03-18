@@ -1,7 +1,7 @@
 <div th:fragment="navbar (active)">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a th:attr="class=${active.equals('index')? 'text_color-pink' : 'text__color-blue'} + ' navbar-brand'"
+            <a th:attr="class=${active.equals('index')? 'active' : 'text__color-blue'} + ' navbar-brand'"
                 th:href="@{/}">Day
                 Care</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
