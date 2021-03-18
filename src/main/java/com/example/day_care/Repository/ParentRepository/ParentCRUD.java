@@ -33,7 +33,7 @@ public class ParentCRUD implements InterfaceParent {
     };
 
     @Override
-    public Parent sellectLastParent() {
+    public Parent sellectLastParent() { 
         String sql = "SELECT * FROM parents ORDER BY parentId DESC LIMIT 1";
         RowMapper<Parent> rowMapper = new BeanPropertyRowMapper<>(Parent.class);
         Parent myParent = jdbcTemplate.queryForObject(sql, rowMapper);

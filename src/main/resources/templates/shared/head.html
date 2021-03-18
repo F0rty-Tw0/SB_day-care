@@ -1,0 +1,15 @@
+<head th:fragment="head (pageTitle)">
+    <meta charset="utf-8">
+    <title th:text="${pageTitle}">Template title</title>
+    <meta name="description" th:content="${pageTitle}">
+    <meta name="author" content="Something with Numbers">
+    <script src="/js/script.js"></script>
+    <script th:src="@{/webjars/bootstrap/5.0.0-beta2/js/bootstrap.bundle.min.js}"></script>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.0.0-beta2/css/bootstrap.min.css}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+        integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+        crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
