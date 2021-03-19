@@ -11,6 +11,10 @@ public interface InterfaceKidService {
     // READ
     public Kid findKidById(int kidId);
 
+    public List<Kid> findKidByParentId(int kidParentId);
+    
+    public List<Kid> findKidByGrpId(int kidGrpId);
+
     public List<Kid> viewAllKids();
 
     // UPDATE

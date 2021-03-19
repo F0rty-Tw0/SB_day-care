@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head th:include="shared/head :: head (pageTitle='View all Employees')" />
+
+  <body>
+    <div class="page">
+      <div th:include="shared/navbar :: navbar (active='employees')" />
+
+      <div class="container">
+        <h1 class="page__header">Displaying all the Employees</h1>
+        <table class="table table-hover table-borderless">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name:</th>
+              <th scope="col">Schedule:</th>
+              <th scope="col">Phone number:</th>
+              <th scope="col">Group:</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="employee : ${myEmployees}">
+              <th scope="row" th:text="${employee.getEmpId()}"></th>
+              <td th:text="${employee.getEmpName()}"></td>
+              <td th:text="${employee.getEmpSchedule()}"></td>
+              <td th:text="${employee.getEmpPhoneNr()}"></td>
+              <td th:text="${interfaceGroupService.findGroupById(employee.getEmpGrpId()).getGrpName()}"></td>
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <footer th:include="shared/footer :: footer" class="mt-5" />
+    </div>
+  </body>
+
+</html>

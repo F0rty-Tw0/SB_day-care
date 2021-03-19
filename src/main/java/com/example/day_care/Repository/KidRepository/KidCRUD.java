@@ -32,7 +32,21 @@ public class KidCRUD implements InterfaceKid {
     };
 
     @Override
-    public List<Kid> viewAllKids() {
+    public List<Kid> findKidByParentId(int kidParentId) {
+        String sql = "SELECT * FROM kids WHERE kidParentId=?";
+        RowMapper<Kid> rowMapper = new BeanPropertyRowMapper<>(Kid.class);
+        return jdbcTemplate.query(sql, rowMapper, kidParentId);
+    };
+    
+    @Override
+    public List<Kid> findKidByGrpId(int kidGrpId) {
+        String sql = "SELECT * FROM kids WHERE kidGrpId=?";
+        RowMapper<Kid> rowMapper = new BeanPropertyRowMapper<>(Kid.class);
+        return jdbcTemplate.query(sql, rowMapper, kidGrpId);
+    };
+
+    @Override
+    public List<Kid> viewAllKids() {       
         String sql = "SELECT * FROM kids";
         RowMapper<Kid> rowMapper = new BeanPropertyRowMapper<>(Kid.class);
         return jdbcTemplate.query(sql, rowMapper);
