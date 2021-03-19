@@ -1,3 +1,4 @@
+/* PAGE */
 body {
 	font-family: 'Baloo 2', cursive;
 	font-weight: 800;
@@ -6,7 +7,6 @@ body {
 	background-position: center;
 	background-repeat: no-repeat;
 	background-color: #f8f9fa;
-	height: 100vh;
 }
 
 #loading {
@@ -21,6 +21,12 @@ body {
 	background-image: url("/images/loading.svg");
 	background-repeat: no-repeat;
 	background-position: center;
+}
+
+.page__header {
+	color: #ff6f96;
+	padding: 50px 0 50px 0;
+	font-size: 50px;
 }
 
 /* TEXT */
@@ -92,10 +98,12 @@ body {
 	left: 8vw;
 	top: 30vh;
 }
+
 .main__page-card h1 {
 	width: 60%;
 	font-size: 68px;
 }
+
 .main__page-card h2 {
 	font-size: 40px;
 }
@@ -140,16 +148,47 @@ body {
 	font-weight: 800;
 	border: none;
 }
+/* DROPDOWN */
+.dropdown-menu {
+	cursor: pointer;
+	background-color: #dee2e6ed;
+}
+
+.dropdown-menu li span {
+	color: #32355d;
+}
+.dropdown-menu li span:hover {
+	color: #ff6f96;
+}
 
 /* TABLE */
-
 table {
 	border-radius: 8px;
 	background-color: #dee2e6ba;
 }
+
+th,
+td {
+	color: #32355d;
+}
+
+td a {
+	font-weight: 700;
+	text-decoration: none;
+}
+
+td {
+	font-weight: 300;
+}
+
+th {
+	font-size: 18px;
+}
+
 thead {
 	background-color: #ff6f9666;
 }
+
 /* FOOTER */
 footer {
 	background-color: #f8f9fa;

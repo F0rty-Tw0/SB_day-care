@@ -46,24 +46,10 @@ public class PageController {
     public String Error() {
         return "error";
     }
-    // jdbcTemplate.execute("CREATE TABLE kids (" + "kidId SERIAL, kidName
-    // VARCHAR(50), kidAge INT)");
 
     @GetMapping("/")
     public String Index(Model model, HttpSession session) {
-        // Kid kid = new Kid();
-        // kid.setKidAge(2);
-        // kid.setKidName("Jessica Alba");
-        // jdbcTemplate.update("INSERT INTO kids(kidName, kidAge) VALUES (?,?)",
-        // kid.getKidName(), kid.getKidAge());
         session.setAttribute("isValidated", isValidated);
-        // String name = "Maria";
-        // String sql = "SELECT kidId, kidAge, kidName FROM kids WHERE kidName =
-        // \""+name+"\"";
-        // List<Kid> listKid = jdbcTemplate.query(sql,
-        // BeanPropertyRowMapper.newInstance(Kid.class));
-
-        // listKid.forEach((kids) -> System.out.println(kids.getKidName()));
         return "home/index";
     }
 
