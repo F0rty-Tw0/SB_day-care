@@ -23,6 +23,10 @@ body {
 	background-position: center;
 }
 
+.page {
+	padding-bottom: 100px;
+}
+
 .page__header {
 	color: #ff6f96;
 	padding: 50px 0 50px 0;
@@ -124,6 +128,12 @@ body {
 	font-size: 40px;
 }
 
+.login__wrong-login {
+	color: #ff6f96;
+	font-size: 62px !important;
+}
+
+/* BUTTONS */
 .login__button {
 	background-color: #32355d;
 	border-color: #32355d;
@@ -132,15 +142,31 @@ body {
 }
 .login__button:hover,
 .login__button:focus,
-.login__button:active {
+.login__button:active,
+.login__button:active:focus {
+	box-shadow: 0 2.8px 2.2px rgb(0 0 0 / 3%), 0 3px 2.5px rgb(0 0 0 / 5%), 0 6px 5px rgb(0 0 0 / 6%),
+		0 6px 5px rgb(0 0 0 / 7%), 0 10px 8px rgb(0 0 0 / 9%), 0 25px 20px rgb(0 0 0 / 12%);
 	background-color: #ff6f96;
 	border-color: #ff6f96;
-
-	box-shadow: none !important;
 }
-.login__wrong-login {
-	color: #ff6f96;
-	font-size: 62px !important;
+.btn-warning:hover,
+.btn-warning:active,
+.btn-warning:focus,
+.btn-warning:active:focus {
+	box-shadow: 0 2.8px 2.2px rgb(0 0 0 / 3%), 0 3px 2.5px rgb(0 0 0 / 5%), 0 6px 5px rgb(0 0 0 / 6%),
+	0 6px 5px rgb(0 0 0 / 7%), 0 10px 8px rgb(0 0 0 / 9%), 0 25px 20px rgb(0 0 0 / 12%);
+	color: #fff;
+	background-color: #55599c;
+	border-color: #55599c;
+}
+.btn-danger:hover,
+.btn-danger:active,
+.btn-danger:focus,
+.btn-danger:active:focus  {
+	box-shadow: 0 2.8px 2.2px rgb(0 0 0 / 3%), 0 3px 2.5px rgb(0 0 0 / 5%), 0 6px 5px rgb(0 0 0 / 6%),
+	0 6px 5px rgb(0 0 0 / 7%), 0 10px 8px rgb(0 0 0 / 9%), 0 25px 20px rgb(0 0 0 / 12%);
+	background-color: #ff6f96;
+	border-color: #ff6f96;
 }
 
 .logout_button {
@@ -148,6 +174,22 @@ body {
 	font-weight: 800;
 	border: none;
 }
+
+.btn-danger {
+	background-color: #fa4777;
+	border-color: #ff6f96;
+}
+.btn-warning {
+	color: #fff;
+	background-color: #32355d;
+	border-color: #32355d;
+}
+
+.btn-warning,
+.btn-danger {
+	border-radius: 4px;
+}
+
 /* DROPDOWN */
 .dropdown-menu {
 	cursor: pointer;
@@ -161,8 +203,15 @@ body {
 	color: #ff6f96;
 }
 
+.form-control:focus,
+.form-control:active,
+.form-control:hover {
+	box-shadow: 0 0 0 0.25rem #ff6f9685;
+	border-color: #ff6f96;
+}
+
 /* TABLE */
-table {
+.table {
 	border-radius: 8px;
 	background-color: #dee2e6ba;
 }
@@ -187,6 +236,12 @@ th {
 
 thead {
 	background-color: #ff6f9666;
+}
+
+/* SHADOW */
+.shadowed {
+	box-shadow: 0 2.8px 2.2px rgb(0 0 0 / 3%), 0 6.7px 5.3px rgb(0 0 0 / 5%), 0 12.5px 10px rgb(0 0 0 / 6%),
+		0 12.3px 9.9px rgb(0 0 0 / 7%), 0 21.8px 15.4px rgb(0 0 0 / 9%), 0 50px 40px rgb(0 0 0 / 12%);
 }
 
 /* FOOTER */

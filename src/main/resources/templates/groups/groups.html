@@ -9,13 +9,14 @@
 
       <div class="container">
         <h1 class="page__header">Displaying all the Groups</h1>
-        <table class="table table-hover table-borderless pb-5">
+        <table class="table table-hover table-borderless shadowed">
           <thead>
             <tr>
               <th scope="col">#</th>
               <th scope="col">Group Name:</th>
               <th scope="col">Employee Name:</th>
               <th scope="col">Children:</th>
+              <th th:if="${session.isValidated}" scope="col">Edit Groups:</th>
             </tr>
           </thead>
           <tbody>
@@ -39,6 +40,10 @@
                 </div>
                 <span th:if="${interfaceKidService.findKidByGrpId(group.getGrpId()).size()<1 }"
                   th:text="${group.getGrpName()} + ' doesn't have any kids'"></span>
+              </td>
+              <td th:if="${session.isValidated}">
+                <button class="btn-warning">Edit</button>
+                <button class="btn-danger">Delete</button>
               </td>
 
             </tr>
