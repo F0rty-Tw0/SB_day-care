@@ -25,6 +25,16 @@ public class KidServiceCRUD implements InterfaceKidService {
     };
 
     @Override
+    public List<Kid> findKidByParentId(int kidParentId) {
+        return interfaceKid.findKidByParentId(kidParentId);
+    };
+
+    @Override
+    public List<Kid> findKidByGrpId(int kidGrpId) {
+        return interfaceKid.findKidByGrpId(kidGrpId);
+    };
+
+    @Override
     public List<Kid> viewAllKids() {
         return interfaceKid.viewAllKids();
     };

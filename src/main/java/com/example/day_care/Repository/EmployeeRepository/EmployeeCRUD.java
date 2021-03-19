@@ -33,6 +33,13 @@ public class EmployeeCRUD implements InterfaceEmployee {
     };
 
     @Override
+    public List<Employee> findEmployeeByGrpId(int empGrpId) {
+        String sql = "SELECT * FROM employees WHERE empGrpId=?";
+        RowMapper<Employee> rowMapper = new BeanPropertyRowMapper<>(Employee.class);
+        return jdbcTemplate.query(sql, rowMapper, empGrpId);
+    };
+
+    @Override
     public List<Employee> viewAllEmployees() {
         String sql = "SELECT * FROM employees";
         RowMapper<Employee> rowMapper = new BeanPropertyRowMapper<>(Employee.class);

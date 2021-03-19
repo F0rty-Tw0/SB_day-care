@@ -4,11 +4,17 @@ const onReady = (callback) => {
 			window.clearInterval(intervalId);
 			callback.call(this);
 		}
-	}, 450);
+	}, 250);
 };
 
 const setVisible = (selector, visible) => {
-	document.querySelector(selector).style.display = visible ? 'block' : 'none';
+	document.querySelector(selector).style.display =
+		visible ? 'block' :
+		'none';
+};
+
+const pageTransition = () => {
+	setVisible('#loading', true);
 };
 
 onReady(() => {

@@ -6,6 +6,7 @@ body {
 	background-position: center;
 	background-repeat: no-repeat;
 	background-color: #f8f9fa;
+	height: 100vh;
 }
 
 #loading {
@@ -139,10 +140,20 @@ body {
 	font-weight: 800;
 	border: none;
 }
+
+/* TABLE */
+
+table {
+	border-radius: 8px;
+	background-color: #dee2e6ba;
+}
+thead {
+	background-color: #ff6f9666;
+}
 /* FOOTER */
 footer {
 	background-color: #f8f9fa;
-	position: absolute;
+	position: fixed;
 	text-align: center;
 	width: 100%;
 	bottom: 0;

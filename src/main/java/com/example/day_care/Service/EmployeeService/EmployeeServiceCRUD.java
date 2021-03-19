@@ -25,6 +25,11 @@ public class EmployeeServiceCRUD implements InterfaceEmployeeService {
     };
 
     @Override
+    public List<Employee> findEmployeeByGrpId(int empGrpId) {
+        return interfaceEmployee.findEmployeeByGrpId(empGrpId);
+    };
+
+    @Override
     public List<Employee> viewAllEmployees() {
         return interfaceEmployee.viewAllEmployees();
     };

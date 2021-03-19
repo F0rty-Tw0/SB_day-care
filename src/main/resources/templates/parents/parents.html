@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head th:include="shared/head :: head (pageTitle='View all Parents')" />
+
+  <body>
+    <div class="page">
+      <div th:include="shared/navbar :: navbar (active='parents')" />
+
+      <div class="container">
+        <h1 class="text-center page__header">Displaying all the Children</h1>
+        <table class="table table-hover table-borderless">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Mother's Name</th>
+              <th scope="col">Father's Name</th>
+              <th scope="col">Phone Number</th>
+              <th scope="col">Address</th>
+              <th scope="col">Children</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="parent : ${myParents}">
+              <th scope="row" th:text="${parent.getParentId()}"></th>
+              <td th:text="${parent.getMomName()}"></td>
+              <td th:text="${parent.getDadName()}"></td>
+              <td th:text="${parent.getPhoneNumber()}"></td>
+              <td th:text="${parent.getAddress()}"></td>
+              <td>
+                <span th:each="kid : ${interfaceKidService.findKidByParentId(parent.getParentId())}"
+                  th:text="${kid.getKidName()} + ' &nbsp; &nbsp; '"></span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <footer th:include="shared/footer :: footer" class="mt-5" />
+    </div>
+  </body>
+
+</html>

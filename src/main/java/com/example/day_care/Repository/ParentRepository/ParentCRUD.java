@@ -25,10 +25,10 @@ public class ParentCRUD implements InterfaceParent {
 
     // READ
     @Override
-    public Parent findParentById(int parrentId) {
-        String sql = "SELECT * FROM parents WHERE parrentId=?";
+    public Parent findParentById(int parentId) {
+        String sql = "SELECT * FROM parents WHERE parentId=?";
         RowMapper<Parent> rowMapper = new BeanPropertyRowMapper<>(Parent.class);
-        Parent myParent = jdbcTemplate.queryForObject(sql, rowMapper, parrentId);
+        Parent myParent = jdbcTemplate.queryForObject(sql, rowMapper, parentId);
         return myParent;
     };
 
@@ -49,17 +49,17 @@ public class ParentCRUD implements InterfaceParent {
 
     // UPDATE
     @Override
-    public Parent editParent(int parrentId, Parent myParent) {
-        String sql = "UPDATE parents SET momName=?, dadName=?, phoneNumber=?, address=? WHERE parrentId=?";
+    public Parent editParent(int parentId, Parent myParent) {
+        String sql = "UPDATE parents SET momName=?, dadName=?, phoneNumber=?, address=? WHERE parentId=?";
         jdbcTemplate.update(sql, myParent.getMomName(), myParent.getDadName(), myParent.getPhoneNumber(),
-                myParent.getAddress(), parrentId);
+                myParent.getAddress(), parentId);
         return null;
     };
 
     // DELETE
     @Override
-    public boolean deleteParent(int parrentId) {
-        String sql = "DELETE FROM parents WHERE parrentId=?";
-        return jdbcTemplate.update(sql, parrentId) >= 0;
+    public boolean deleteParent(int parentId) {
+        String sql = "DELETE FROM parents WHERE parentId=?";
+        return jdbcTemplate.update(sql, parentId) >= 0;
     };
 }

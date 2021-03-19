@@ -12,6 +12,8 @@ public interface InterfaceEmployee {
     // READ
     public Employee findEmployeeById(int empId);
 
+    public List<Employee> findEmployeeByGrpId(int empGrpId);
+
     public List<Employee> viewAllEmployees();
 
     // UPDATE

@@ -9,15 +9,15 @@ public interface InterfaceParent {
     public Parent addParent(Parent myParent);
 
     // READ
-    public Parent findParentById(int parrentId);
+    public Parent findParentById(int parentId);
 
     public Parent sellectLastParent();
 
     public List<Parent> viewAllParents();
 
     // UPDATE
-    public Parent editParent(int parrentId, Parent myParent);
+    public Parent editParent(int parentId, Parent myParent);
 
     // DELETE
-    public boolean deleteParent(int parrentId);
+    public boolean deleteParent(int parentId);
 }
