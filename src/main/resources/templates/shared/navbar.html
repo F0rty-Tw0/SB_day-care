@@ -54,7 +54,7 @@
                             System.out.println(String.valueOf(session.toString())); th:href="@{/login}" tabindex="-1"
                             aria-disabled="true">Log
                             In</a>
-                        <form th:action="@{/admin}" method="POST">
+                        <form th:action="@{/}" method="POST">
                             <button th:if="${session.isValidated}" type="submit" name="submit"
                                 th:attr="class=${active.equals('login')? 'active' : 'text__color-blue'} + ' nav-link logout_button'">Log
                                 out</button>

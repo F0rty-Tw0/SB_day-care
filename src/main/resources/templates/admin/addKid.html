@@ -1,13 +1,13 @@
 <!doctype html>
 <html lang="en">
 
-    <head th:include="shared/head :: head (pageTitle='Admin Page')" />
+    <head th:include="shared/head :: head (pageTitle='Admin Page (Add Kid)')" />
 
     <body>
         <div class="page">
             <div th:include="shared/navbar :: navbar (active='admin')" />
             <div class="container">
-                <form class="row g-3" th:action="@{/admin}" method="POST">
+                <form class="row g-3">
                     <div class="col-6">
                         <img src="https://via.placeholder.com/450" class="img-fluid" alt="...">
                     </div>
@@ -53,16 +53,10 @@
                             </div>
                         </div>
                         <div class="col-12">
-                            <button type="submit" name="submit" class="btn btn-primary">Success</button>
+                            <button type="submit" class="btn btn-primary">Sign in</button>
                         </div>
-
                     </div>
 
-                </form>
-                <form class="row g-3" th:action="@{/addKid}" method="POST">
-                    <div class="col-12">
-                        <button type="submit" name="submit" class="btn btn-primary">Add New Kid</button>
-                    </div>
                 </form>
             </div>
         </div>

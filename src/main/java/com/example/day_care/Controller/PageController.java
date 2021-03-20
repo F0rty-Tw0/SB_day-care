@@ -53,6 +53,12 @@ public class PageController {
         return "home/index";
     }
 
+    @PostMapping("/")
+    public String adminLogOut() {
+        isValidated = false;
+        return "redirect:/";
+    }
+
     @GetMapping("/children")
     public String displayChildren(Model model, HttpSession session) {
         List<Kid> kidsList = interfaceKidService.viewAllKids();
@@ -112,7 +118,6 @@ public class PageController {
     @GetMapping("/admin")
     public String displayAdmin(Model model, HttpSession session) {
         if (isValidated) {
-            model.addAttribute("isValidated", isValidated);
             return "admin/admin";
         } else {
             return "redirect:/login";
@@ -120,8 +125,12 @@ public class PageController {
     }
 
     @PostMapping("/admin")
-    public String adminLogOut() {
-        isValidated = false;
-        return "redirect:/";
+    public String submitAdminForm(Model model, HttpSession session) {
+        return "admin/success";
+    }
+
+    @PostMapping("/addKid")
+    public String addNewKidForm(Model model, HttpSession session) {
+        return "admin/addKid";
     }
 }
