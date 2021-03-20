@@ -31,8 +31,8 @@
               <td th:text="${interfaceParentService.findParentById(kid.getKidParentId()).getDadName()}"></td>
 
               <td th:if="${session.isValidated}">
-                <button class="btn-warning">Edit</button>
-                <button class="btn-danger">Delete</button>
+                <button class="btn btn-warning">Edit</button>
+                <button class="btn btn-danger">Delete</button>
               </td>
             </tr>
           </tbody>

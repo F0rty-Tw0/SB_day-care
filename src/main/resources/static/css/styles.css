@@ -140,12 +140,23 @@ body {
 	margin-right: 60px;
 	width: 88%;
 }
+
+.btn:hover,
+.btn:active,
+.btn:focus,
+.btn:active:focus {
+	box-shadow: 0 2.8px 2.2px rgb(0 0 0 / 3%), 0 3px 2.5px rgb(0 0 0 / 5%), 0 6px 5px rgb(0 0 0 / 6%),
+		0 6px 5px rgb(0 0 0 / 7%), 0 10px 8px rgb(0 0 0 / 9%), 0 25px 20px rgb(0 0 0 / 12%);
+}
+
 .login__button:hover,
 .login__button:focus,
 .login__button:active,
-.login__button:active:focus {
-	box-shadow: 0 2.8px 2.2px rgb(0 0 0 / 3%), 0 3px 2.5px rgb(0 0 0 / 5%), 0 6px 5px rgb(0 0 0 / 6%),
-		0 6px 5px rgb(0 0 0 / 7%), 0 10px 8px rgb(0 0 0 / 9%), 0 25px 20px rgb(0 0 0 / 12%);
+.login__button:active:focus,
+.btn-danger:hover,
+.btn-danger:active,
+.btn-danger:focus,
+.btn-danger:active:focus {
 	background-color: #ff6f96;
 	border-color: #ff6f96;
 }
@@ -153,20 +164,9 @@ body {
 .btn-warning:active,
 .btn-warning:focus,
 .btn-warning:active:focus {
-	box-shadow: 0 2.8px 2.2px rgb(0 0 0 / 3%), 0 3px 2.5px rgb(0 0 0 / 5%), 0 6px 5px rgb(0 0 0 / 6%),
-	0 6px 5px rgb(0 0 0 / 7%), 0 10px 8px rgb(0 0 0 / 9%), 0 25px 20px rgb(0 0 0 / 12%);
 	color: #fff;
 	background-color: #55599c;
 	border-color: #55599c;
-}
-.btn-danger:hover,
-.btn-danger:active,
-.btn-danger:focus,
-.btn-danger:active:focus  {
-	box-shadow: 0 2.8px 2.2px rgb(0 0 0 / 3%), 0 3px 2.5px rgb(0 0 0 / 5%), 0 6px 5px rgb(0 0 0 / 6%),
-	0 6px 5px rgb(0 0 0 / 7%), 0 10px 8px rgb(0 0 0 / 9%), 0 25px 20px rgb(0 0 0 / 12%);
-	background-color: #ff6f96;
-	border-color: #ff6f96;
 }
 
 .logout_button {
