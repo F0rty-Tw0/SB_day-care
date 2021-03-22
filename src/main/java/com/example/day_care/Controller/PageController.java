@@ -126,11 +126,15 @@ public class PageController {
 
     @PostMapping("/admin")
     public String submitAdminForm(Model model, HttpSession session) {
-        return "admin/success";
+        return "admin/addKid";
     }
 
     @PostMapping("/addKid")
     public String addNewKidForm(Model model, HttpSession session) {
         return "admin/addKid";
+    }
+    @PostMapping("/success")
+    public String addNewParentForm(Model model, HttpSession session) {
+        return "admin/success";
     }
 }

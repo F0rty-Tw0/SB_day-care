@@ -33,6 +33,12 @@ body {
 	font-size: 50px;
 }
 
+.page__header-blue {
+	color: #32355d ;
+	padding: 50px 0 50px 50px;
+	font-size: 50px;
+}
+
 /* TEXT */
 .text__color-pink,
 .active {
@@ -133,6 +139,12 @@ body {
 	font-size: 62px !important;
 }
 
+/* ADMIN */
+.admin__container {
+	border-radius: 8px;
+	background-color: #dee2e6e0;
+
+}
 /* BUTTONS */
 .login__button {
 	background-color: #32355d;
