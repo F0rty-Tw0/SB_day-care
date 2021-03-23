@@ -25,7 +25,8 @@
                             <input required type="text" class="form-control" id="inputChildrenName"
                                 placeholder="Nikolai Levander">
                             <label for="inputChildrenAge" class="form-label text__color-gray">Children's Age</label>
-                            <input min="1" required type="number" class="form-control" id="inputChildrenAge" placeholder="3">
+                            <input min="1" required type="number" class="form-control" id="inputChildrenAge"
+                                placeholder="3">
                             <button type="button" class="btn btn-primary mt-5 login__button shadowed w-100"
                                 data-bs-toggle="modal" data-bs-target="#confirmationModal">
                                 Add Another Kid
@@ -36,17 +37,18 @@
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
+                                            <!-- <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button> -->
+                                            <h4 class="modal-title text__color-blue text-center"
+                                                id="confirmationModalLabel">Are you sure you want to add
+                                                one more child?</h4>
                                         </div>
-                                        <h5 class="modal-title text__color-blue text-center" id="confirmationModalLabel">Are you sure you want to add
-                                            one more child?</h5>
 
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
                                                 data-bs-dismiss="modal">Close</button>
                                             <button type="submit" th:formaction="@{/addKid}" name="submit"
-                                                class="btn btn-primary">Confirm</button>
+                                                class="btn btn-warning ">Confirm</button>
                                         </div>
                                     </div>
                                 </div>

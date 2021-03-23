@@ -22,15 +22,58 @@
           </thead>
           <tbody>
             <tr th:each="employee : ${myEmployees}">
-              <th scope="row" th:text="${employee.getEmpId()}"></th>
-              <td th:text="${employee.getEmpName()}"></td>
-              <td th:text="${employee.getEmpSchedule()}"></td>
-              <td th:text="${employee.getEmpPhoneNr()}"></td>
-              <td th:text="${interfaceGroupService.findGroupById(employee.getEmpGrpId()).getGrpName()}"></td>
-              <td th:if="${session.isValidated}">
-                <button class="btn btn-warning">Edit</button>
-                <button class="btn btn-danger">Delete</button>
-              </td>
+              <form>
+                <th scope="row">
+                  <span th:text="${employee.getEmpId()}"></span>
+                  <div th:if="${session.isValidated}">
+                    <input class="d-none" th:value="${employee.getEmpId()}" name="id" type="text">
+                  </div>
+                </th>
+                <td class="w-20">
+                  <span th:text="${employee.getEmpName()}"></span>
+                  <div th:if="${session.isValidated}" class="collapse edit__menu"
+                    th:id="'employee'+${employee.getEmpId()}">
+                    <input class="form-control edit__options" th:value="${employee.getEmpName()}" name="name"
+                      type="text">
+                  </div>
+                </td>
+                <td class="w-20">
+                  <span th:text="${employee.getEmpSchedule()}"></span>
+                  <div th:if="${session.isValidated}" class="collapse edit__menu"
+                    th:id="'employee'+${employee.getEmpId()}">
+                    <input class="form-control edit__options" th:value="${employee.getEmpSchedule()}" name="schedule"
+                      type="text">
+                  </div>
+                </td>
+                <td class="w-20">
+                  <span th:text="${employee.getEmpPhoneNr()}"></span>
+                  <div th:if="${session.isValidated}" class="collapse edit__menu"
+                    th:id="'employee'+${employee.getEmpId()}">
+                    <input class="form-control edit__options" th:value="${employee.getEmpPhoneNr()}" name="phone"
+                      type="text">
+                  </div>
+                </td>
+                <td class="w-20">
+                  <span th:text="${interfaceGroupService.findGroupById(employee.getEmpGrpId()).getGrpName()}"></span>
+                  <div th:if="${session.isValidated}" class="collapse edit__menu"
+                    th:id="'employee'+${employee.getEmpId()}">
+                    <select name="group" class="form-control edit__options form-select "
+                      aria-label="Default select example">
+                      <option th:each="group : ${interfaceGroupService.viewAllGroups()}" th:text="${group.getGrpName()}"
+                        th:selected="${interfaceGroupService.findGroupById(employee.getEmpGrpId()).getGrpName().equals(group.getGrpName())}"
+                        th:value="${group.getGrpName()}"></option>
+                    </select>
+                  </div>
+                </td>
+                <td class="w-20" th:if="${session.isValidated}">
+                  <button type="button" data-bs-toggle="collapse" th:href="'#employee'+${employee.getEmpId()}"
+                    aria-expanded="false" class="btn btn-warning">Edit</button>
+                  <button type="button" class="btn btn-danger">Delete</button>
+                  <div class="collapse" th:id="'employee'+${employee.getEmpId()}">
+                    <button type="submit" class="btn btn-success button__save">SAVE</button>
+                  </div>
+                </td>
+              </form>
             </tr>
           </tbody>
         </table>
