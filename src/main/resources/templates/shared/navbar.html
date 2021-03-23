@@ -13,27 +13,27 @@
                 <div class="animation start-home"></div>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a onclick="pageTransition()"
+                        <a th:onclick="pageTransition()"
                             th:attr="class=${active.equals('children')? 'active' : 'text__color-blue'} + ' nav-link'"
                             aria-current="page" th:href="@{/children}">Children</a>
                     </li>
                     <li class="nav-item">
-                        <a onclick="pageTransition()"
+                        <a th:onclick="pageTransition()"
                             th:attr="class=${active.equals('parents')? 'active' : 'text__color-blue'} + ' nav-link'"
                             th:href="@{/parents}">Parents</a>
                     </li>
                     <li class="nav-item">
-                        <a onclick="pageTransition()"
+                        <a th:onclick="pageTransition()"
                             th:attr="class=${active.equals('groups')? 'active' : 'text__color-blue'} + ' nav-link'"
                             th:href="@{/groups}">Groups</a>
                     </li>
                     <li class="nav-item">
-                        <a onclick="pageTransition()"
+                        <a th:onclick="pageTransition()"
                             th:attr="class=${active.equals('employees')? 'active' : 'text__color-blue'} + ' nav-link'"
                             th:href="@{/employees}">Employees</a>
                     </li>
                     <li th:if="${session.isValidated}" class="nav-item">
-                        <a onclick="pageTransition()"
+                        <a th:onclick="pageTransition()"
                             th:attr="class=${active.equals('admin')? 'active' : 'text__color-blue'} + ' nav-link'"
                             th:href="@{/admin}">Admin</a>
                     </li>

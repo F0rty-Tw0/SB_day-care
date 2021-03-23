@@ -1,7 +1,6 @@
 package com.example.day_care.Controller;
 
 import java.util.List;
-import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
 
@@ -9,11 +8,13 @@ import com.example.day_care.Model.Employee;
 import com.example.day_care.Model.Group;
 import com.example.day_care.Model.Kid;
 import com.example.day_care.Model.Parent;
+import com.example.day_care.Model.Schedule;
 import com.example.day_care.Service.EmployeeService.InterfaceEmployeeService;
 import com.example.day_care.Service.GroupService.InterfaceGroupService;
 import com.example.day_care.Service.KidService.InterfaceKidService;
 import com.example.day_care.Service.LoginService.LoginService;
 import com.example.day_care.Service.ParentService.InterfaceParentService;
+import com.example.day_care.Service.ScheduleService.InterfaceScheduleService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -37,15 +38,12 @@ public class PageController {
     @Autowired
     private InterfaceGroupService interfaceGroupService;
     @Autowired
+    private InterfaceScheduleService interfaceScheduleService;
+    @Autowired
     private InterfaceEmployeeService interfaceEmployeeService;
 
     // Admin state
     private boolean isValidated;
-
-    @GetMapping("/error")
-    public String Error() {
-        return "error";
-    }
 
     @GetMapping("/")
     public String Index(Model model, HttpSession session) {
@@ -62,8 +60,12 @@ public class PageController {
     @GetMapping("/children")
     public String displayChildren(Model model, HttpSession session) {
         List<Kid> kidsList = interfaceKidService.viewAllKids();
+        List<Group> groupsList = interfaceGroupService.viewAllGroups();
+        List<Parent> parentsList = interfaceParentService.viewAllParents();
         model.addAttribute("interfaceGroupService", interfaceGroupService);
         model.addAttribute("interfaceParentService", interfaceParentService);
+        model.addAttribute("myParents", parentsList);
+        model.addAttribute("myGroups", groupsList);
         model.addAttribute("myKids", kidsList);
         return "children/children";
     }
@@ -88,7 +90,10 @@ public class PageController {
     @GetMapping("/employees")
     public String displayEmployees(Model model, HttpSession session) {
         List<Employee> employeesList = interfaceEmployeeService.viewAllEmployees();
+        List<Schedule> scheduleList = interfaceScheduleService.viewAllSchedules();
+        model.addAttribute("interfaceScheduleService", interfaceScheduleService);
         model.addAttribute("interfaceGroupService", interfaceGroupService);
+        model.addAttribute("mySchedule", scheduleList);
         model.addAttribute("myEmployees", employeesList);
         return "employees/employees";
     }

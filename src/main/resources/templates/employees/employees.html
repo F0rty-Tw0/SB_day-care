@@ -23,32 +23,37 @@
           <tbody>
             <tr th:each="employee : ${myEmployees}">
               <form>
-                <th scope="row">
+                <th class="w-5" scope="row">
                   <span th:text="${employee.getEmpId()}"></span>
                   <div th:if="${session.isValidated}">
-                    <input class="d-none" th:value="${employee.getEmpId()}" name="id" type="text">
+                    <input class="d-none" th:value="${employee.getEmpId()}" name="id" type="number">
                   </div>
                 </th>
                 <td class="w-20">
                   <span th:text="${employee.getEmpName()}"></span>
                   <div th:if="${session.isValidated}" class="collapse edit__menu"
-                    th:id="'employee'+${employee.getEmpId()}">
+                    th:id="'employee' + ${employee.getEmpId()}">
                     <input class="form-control edit__options" th:value="${employee.getEmpName()}" name="name"
                       type="text">
                   </div>
                 </td>
                 <td class="w-20">
-                  <span th:text="${employee.getEmpSchedule()}"></span>
+                  <span
+                    th:text="${interfaceScheduleService.findScheduleById(employee.getEmpSchId()).getSchTime()}"></span>
                   <div th:if="${session.isValidated}" class="collapse edit__menu"
-                    th:id="'employee'+${employee.getEmpId()}">
-                    <input class="form-control edit__options" th:value="${employee.getEmpSchedule()}" name="schedule"
-                      type="text">
+                    th:id="'employee' + ${employee.getEmpId()}">
+                    <select name="schedule" class="form-control edit__options form-select"
+                      aria-label="Schedule Selector">
+                      <option th:each="schedule : ${mySchedule}" th:text="${schedule.getSchTime()}"
+                        th:selected="${interfaceScheduleService.findScheduleById(employee.getEmpSchId()).getSchId().equals(schedule.getSchId())}"
+                        th:value="${schedule.getSchId()}"></option>
+                    </select>
                   </div>
                 </td>
-                <td class="w-20">
+                <td class="w-15">
                   <span th:text="${employee.getEmpPhoneNr()}"></span>
                   <div th:if="${session.isValidated}" class="collapse edit__menu"
-                    th:id="'employee'+${employee.getEmpId()}">
+                    th:id="'employee' + ${employee.getEmpId()}">
                     <input class="form-control edit__options" th:value="${employee.getEmpPhoneNr()}" name="phone"
                       type="text">
                   </div>
@@ -56,21 +61,22 @@
                 <td class="w-20">
                   <span th:text="${interfaceGroupService.findGroupById(employee.getEmpGrpId()).getGrpName()}"></span>
                   <div th:if="${session.isValidated}" class="collapse edit__menu"
-                    th:id="'employee'+${employee.getEmpId()}">
-                    <select name="group" class="form-control edit__options form-select "
-                      aria-label="Default select example">
+                    th:id="'employee' + ${employee.getEmpId()}">
+                    <select name="group" class="form-control edit__options form-select"
+                      aria-label="Group selector">
                       <option th:each="group : ${interfaceGroupService.viewAllGroups()}" th:text="${group.getGrpName()}"
                         th:selected="${interfaceGroupService.findGroupById(employee.getEmpGrpId()).getGrpName().equals(group.getGrpName())}"
-                        th:value="${group.getGrpName()}"></option>
+                        th:value="${group.getGrpId()}"></option>
                     </select>
                   </div>
                 </td>
                 <td class="w-20" th:if="${session.isValidated}">
-                  <button type="button" data-bs-toggle="collapse" th:href="'#employee'+${employee.getEmpId()}"
+                  <button type="button" data-bs-toggle="collapse" th:href="'#employee' + ${employee.getEmpId()}"
                     aria-expanded="false" class="btn btn-warning">Edit</button>
-                  <button type="button" class="btn btn-danger">Delete</button>
-                  <div class="collapse" th:id="'employee'+${employee.getEmpId()}">
-                    <button type="submit" class="btn btn-success button__save">SAVE</button>
+                  <button type="button"  th:onclick="pageTransition()" class="btn btn-danger">Delete</button>
+                  <div class="collapse" th:id="'employee' + ${employee.getEmpId()}">
+                    <button type="submit" th:onclick="pageTransition()"
+                      class="btn btn-success button__save">SAVE</button>
                   </div>
                 </td>
               </form>

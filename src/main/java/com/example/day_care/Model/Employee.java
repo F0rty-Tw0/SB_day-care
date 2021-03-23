@@ -8,7 +8,7 @@ public class Employee {
     @Id
     private int empId;
     private String empName;
-    private String empSchedule;
+    private String empSchId;
     private long empPhoneNr;
     private String empRole;
     private int empGrpId;
@@ -21,12 +21,12 @@ public class Employee {
         this.empName = empName;
     }
 
-    public String getEmpSchedule() {
-        return empSchedule;
+    public String getEmpSchId() {
+        return empSchId;
     }
 
-    public void setEmpSchedule(String empSchedule) {
-        this.empSchedule = empSchedule;
+    public void setEmpSchId(String empSchId) {
+        this.empSchId = empSchId;
     }
 
     public long getEmpPhoneNr() {

@@ -6,9 +6,9 @@
   <body>
     <div class="page">
       <div th:include="shared/navbar :: navbar (active='admin')" />
-      <div class="container">
-        <h1>SUCCESS
-        </h1>
+      <div class="main__page-card">
+        <h1 class="text__color-pink">Congratulation on your Registration</h1>
+        <a th:href="@{/admin}" type="submit" class="btn btn-primary login__button shadowed w-50">Go Back</a>
       </div>
     </div>
   </body>

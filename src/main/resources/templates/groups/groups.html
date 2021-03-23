@@ -21,31 +21,47 @@
           </thead>
           <tbody>
             <tr th:each="group : ${myGroups}">
-              <th scope="row" th:text="${group.getGrpId()}"></th>
-              <td th:text="${group.getGrpName()}"></td>
-              <td>
-                <span th:each="employee : ${interfaceEmployeeService.findEmployeeByGrpId(group.getGrpId())}"
-                  th:text="${employee.getEmpName()} + ' &nbsp; &nbsp; '"></span>
-              </td>
+              <form>
+                <th class="w-5" scope="row">
+                  <span th:text="${group.getGrpId()}"></span>
+                  <div th:if="${session.isValidated}">
+                    <input class="d-none" th:value="${group.getGrpId()}" name="id" type="number">
+                  </div>
+                </th>
+                <td class="w-20">
+                  <span th:text="${group.getGrpName()}"></span>
+                  <div th:if="${session.isValidated}" class="collapse edit__menu" th:id="'group'+${group.getGrpId()}">
+                    <input class="form-control edit__options" th:value="${group.getGrpName()}" name="name" type="text">
+                  </div>
+                </td>
+                <td class="w-20">
+                  <span th:each="employee : ${interfaceEmployeeService.findEmployeeByGrpId(group.getGrpId())}"
+                    th:text="${employee.getEmpName()} + ' &nbsp; &nbsp; '"></span>
+                </td>
 
-              <td>
-                <div th:if="${interfaceKidService.findKidByGrpId(group.getGrpId()).size()>=1}" class="dropdown">
-                  <a class="dropdown-toggle text__color-blue" id="childrenDropdown" role="button"
-                    data-bs-toggle="dropdown" aria-expanded="false" th:text="${group.getGrpName()} + '\'s Children' ">
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="childrenDropdown">
-                    <li><span th:each="kid : ${interfaceKidService.findKidByGrpId(group.getGrpId())}"
-                        class="dropdown-item" th:text="${kid.getKidName()}"></span></li>
-                  </ul>
-                </div>
-                <span th:if="${interfaceKidService.findKidByGrpId(group.getGrpId()).size()<1 }"
-                  th:text="${group.getGrpName()} + ' doesn't have any kids'"></span>
-              </td>
-              <td th:if="${session.isValidated}">
-                <button class="btn btn-warning">Edit</button>
-                <button class="btn btn-danger">Delete</button>
-              </td>
-
+                <td class="w-20">
+                  <div th:if="${interfaceKidService.findKidByGrpId(group.getGrpId()).size()>=1}" class="dropdown">
+                    <a class="dropdown-toggle text__color-blue" id="childrenDropdown" role="button"
+                      data-bs-toggle="dropdown" aria-expanded="false" th:text="${group.getGrpName()} + '\'s Children' ">
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="childrenDropdown">
+                      <li><span th:each="kid : ${interfaceKidService.findKidByGrpId(group.getGrpId())}"
+                          class="dropdown-item" th:text="${kid.getKidName()}"></span></li>
+                    </ul>
+                  </div>
+                  <span th:if="${interfaceKidService.findKidByGrpId(group.getGrpId()).size()<1 }"
+                    th:text="${group.getGrpName()} + ' doesn't have any kids'"></span>
+                </td>
+                <td class="w-15" th:if="${session.isValidated}">
+                  <button type="button" class="btn btn-warning" data-bs-toggle="collapse"
+                    th:href="'#group'+${group.getGrpId()}" aria-expanded="false">Edit</button>
+                  <button type="button" th:onclick="pageTransition()" class="btn btn-danger">Delete</button>
+                  <div class="collapse" th:id="'group'+${group.getGrpId()}">
+                    <button type="submit" th:onclick="pageTransition()"
+                      class="btn btn-success button__save">SAVE</button>
+                  </div>
+                </td>
+              </form>
             </tr>
           </tbody>
         </table>
