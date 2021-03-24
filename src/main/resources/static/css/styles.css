@@ -291,6 +291,9 @@ thead {
 	box-shadow: 0 2.8px 2.2px rgb(0 0 0 / 3%), 0 6.7px 5.3px rgb(0 0 0 / 5%), 0 12.5px 10px rgb(0 0 0 / 6%),
 		0 12.3px 9.9px rgb(0 0 0 / 7%), 0 21.8px 15.4px rgb(0 0 0 / 9%), 0 50px 40px rgb(0 0 0 / 12%);
 }
+.shadowed-light {
+	box-shadow: 0 2.8px 2.2px rgb(0 0 0 / 3%), 0 6.7px 5.3px rgb(0 0 0 / 5%), 0 12.5px 10px rgb(0 0 0 / 6%)
+}
 
 /* FOOTER */
 footer {

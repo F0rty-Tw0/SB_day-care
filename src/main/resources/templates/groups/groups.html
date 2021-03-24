@@ -8,7 +8,36 @@
       <div th:include="shared/navbar :: navbar (active='groups')" />
 
       <div class="container">
-        <h1 class="page__header">Displaying all the Groups</h1>
+        <h1 class="page__header">Displaying all Groups <button type="button" data-bs-toggle="modal"
+            data-bs-target="#addGroup" aria-expanded="false" th:if="${session.isValidated}"
+            class="text-uppercase btn btn-success">add new
+            group</button></h1>
+        <div class="modal fade" id="addGroup" tabindex="-1" data-bs-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title text__color-blue" id="exampleModalLabel">Enter a group name:</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <form method="POST">
+                <div class="modal-body">
+                  <img src="/images/group.webp" class="img-fluid" alt="A day care group of children listening to the teacher">
+                  <label for="groupName" class="form-label text__color-gray">Group Name</label>
+                  <input required class="form-control shadowed-light" name="groupName" type="text"
+                    placeholder="Waterpuddle">
+
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="submit" th:onclick="pageTransition()" th:formaction="@{/groups}"
+                    class="btn btn-warning">Add Group</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
         <table class="table table-hover table-borderless shadowed">
           <thead>
             <tr>
@@ -20,10 +49,11 @@
             </tr>
           </thead>
           <tbody>
-            <tr th:each="group : ${myGroups}">
+            <tr th:each="group : ${myGroups}"
+              th:if="${!(interfaceKidService.findKidByGrpId(group.getGrpId()).size()<1) && !group.getGrpName().equals('Queue') && !group.getGrpName().equals('Not Assigned')}  ">
               <form>
                 <th class="w-5" scope="row">
-                  <span th:text="${group.getGrpId()}"></span>
+                  <span th:text="${group.getGrpId() - 2}"></span>
                   <div th:if="${session.isValidated}">
                     <input class="d-none" th:value="${group.getGrpId()}" name="id" type="number">
                   </div>
@@ -31,12 +61,16 @@
                 <td class="w-20">
                   <span th:text="${group.getGrpName()}"></span>
                   <div th:if="${session.isValidated}" class="collapse edit__menu" th:id="'group'+${group.getGrpId()}">
-                    <input class="form-control edit__options" th:value="${group.getGrpName()}" name="name" type="text">
+                    <input class="form-control edit__options shadowed-light" th:value="${group.getGrpName()}"
+                      name="name" type="text">
                   </div>
                 </td>
                 <td class="w-20">
+                  <span th:if="${interfaceEmployeeService.findEmployeeByGrpId(group.getGrpId()).size() < 1}">Not
+                    Assigned</span>
                   <span th:each="employee : ${interfaceEmployeeService.findEmployeeByGrpId(group.getGrpId())}"
-                    th:text="${employee.getEmpName()} + ' &nbsp; &nbsp; '"></span>
+                    th:text="${employee.getEmpName()} + ' &nbsp; &nbsp; '">
+                  </span>
                 </td>
 
                 <td class="w-20">
@@ -49,16 +83,16 @@
                           class="dropdown-item" th:text="${kid.getKidName()}"></span></li>
                     </ul>
                   </div>
-                  <span th:if="${interfaceKidService.findKidByGrpId(group.getGrpId()).size()<1 }"
-                    th:text="${group.getGrpName()} + ' doesn't have any kids'"></span>
+
                 </td>
                 <td class="w-15" th:if="${session.isValidated}">
-                  <button type="button" class="btn btn-warning" data-bs-toggle="collapse"
+                  <button type="button" class="text-uppercase btn btn-warning" data-bs-toggle="collapse"
                     th:href="'#group'+${group.getGrpId()}" aria-expanded="false">Edit</button>
-                  <button type="button" th:onclick="pageTransition()" class="btn btn-danger">Delete</button>
+                  <button type="button" th:onclick="pageTransition()"
+                    class="text-uppercase btn btn-danger">Delete</button>
                   <div class="collapse" th:id="'group'+${group.getGrpId()}">
                     <button type="submit" th:onclick="pageTransition()"
-                      class="btn btn-success button__save">SAVE</button>
+                      class="text-uppercase btn btn-success button__save">SAVE</button>
                   </div>
                 </td>
               </form>

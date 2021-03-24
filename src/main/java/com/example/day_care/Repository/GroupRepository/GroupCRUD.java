@@ -17,7 +17,7 @@ public class GroupCRUD implements InterfaceGroup {
     // CREATE
     @Override
     public Group addGroup(Group myGroup) {
-        String sql = "INSERT INTO xGroups(grpName) VALUES(?)";
+        String sql = "INSERT INTO xgroups(grpName) VALUES(?)";
         jdbcTemplate.update(sql, myGroup.getGrpName());
         return null;
     };
@@ -25,7 +25,7 @@ public class GroupCRUD implements InterfaceGroup {
     // READ
     @Override
     public Group findGroupById(int grpId) {
-        String sql = "SELECT * FROM xGroups WHERE grpId=?";
+        String sql = "SELECT * FROM xgroups WHERE grpId=?";
         RowMapper<Group> rowMapper = new BeanPropertyRowMapper<>(Group.class);
         Group myGroup = jdbcTemplate.queryForObject(sql, rowMapper, grpId);
         return myGroup;
@@ -33,7 +33,7 @@ public class GroupCRUD implements InterfaceGroup {
 
     @Override
     public Group sellectLastGroup() {
-        String sql = "SELECT * FROM xGroups ORDER BY grpId DESC LIMIT 1";
+        String sql = "SELECT * FROM xgroups ORDER BY grpId DESC LIMIT 1";
         RowMapper<Group> rowMapper = new BeanPropertyRowMapper<>(Group.class);
         Group myGroup = jdbcTemplate.queryForObject(sql, rowMapper);
         return myGroup;
@@ -41,7 +41,7 @@ public class GroupCRUD implements InterfaceGroup {
 
     @Override
     public List<Group> viewAllGroups() {
-        String sql = "SELECT * FROM xGroups";
+        String sql = "SELECT * FROM xgroups";
         RowMapper<Group> rowMapper = new BeanPropertyRowMapper<>(Group.class);
         return jdbcTemplate.query(sql, rowMapper);
     };
@@ -49,7 +49,7 @@ public class GroupCRUD implements InterfaceGroup {
     // UPDATE
     @Override
     public Group editGroup(int grpId, Group myGroup) {
-        String sql = "UPDATE xGroups SET grpName=? WHERE grpId=?";
+        String sql = "UPDATE xgroups SET grpName=? WHERE grpId=?";
         jdbcTemplate.update(sql, myGroup.getGrpName(), grpId);
         return null;
     };
@@ -57,7 +57,7 @@ public class GroupCRUD implements InterfaceGroup {
     // DELETE
     @Override
     public boolean deleteGroup(int grpId) {
-        String sql = "DELETE FROM xGroups WHERE grpId=?";
+        String sql = "DELETE FROM xgroups WHERE grpId=?";
         return jdbcTemplate.update(sql, grpId) >= 0;
     };
 

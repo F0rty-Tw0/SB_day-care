@@ -9,7 +9,7 @@ public class Employee {
     private int empId;
     private String empName;
     private String empSchId;
-    private long empPhoneNr;
+    private int empPhoneNr;
     private String empRole;
     private int empGrpId;
 
@@ -29,11 +29,11 @@ public class Employee {
         this.empSchId = empSchId;
     }
 
-    public long getEmpPhoneNr() {
+    public int getEmpPhoneNr() {
         return empPhoneNr;
     }
 
-    public void setEmpPhoneNr(long empPhoneNr) {
+    public void setEmpPhoneNr(int empPhoneNr) {
         this.empPhoneNr = empPhoneNr;
     }
 

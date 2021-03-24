@@ -30,19 +30,19 @@
                     <input class="d-none" th:value="${parent.getParentId()}" name="id" type="number">
                   </div>
                 </th>
-                <td class="w-20">
+                <td class="w-15">
                   <span th:text="${parent.getMomName()}"></span>
                   <div th:if="${session.isValidated}" class="collapse edit__menu"
                     th:id="'parent' + ${parent.getParentId()}">
-                    <input class="form-control edit__options" th:value="${parent.getMomName()}" name="momName"
+                    <input class="form-control edit__options shadowed-light" th:value="${parent.getMomName()}" name="momName"
                       type="text">
                   </div>
                 </td>
-                <td class="w-20">
+                <td class="w-15">
                   <span th:text="${parent.getDadName()}"></span>
                   <div th:if="${session.isValidated}" class="collapse edit__menu"
                     th:id="'parent' + ${parent.getParentId()}">
-                    <input class="form-control edit__options" th:value="${parent.getDadName()}" name="dadName"
+                    <input class="form-control edit__options shadowed-light" th:value="${parent.getDadName()}" name="dadName"
                       type="text">
                   </div>
                 </td>
@@ -50,15 +50,15 @@
                   <span th:text="${parent.getPhoneNumber()}"></span>
                   <div th:if="${session.isValidated}" class="collapse edit__menu"
                     th:id="'parent' + ${parent.getParentId()}">
-                    <input class="form-control edit__options" th:value="${parent.getPhoneNumber()}" name="phone"
+                    <input class="form-control edit__options shadowed-light" th:value="${parent.getPhoneNumber()}" name="phone"
                       type="tel" pattern="[0-9]{8}">
                   </div>
                 </td>
-                <td class="w-15">
+                <td class="w-20">
                   <span th:text="${parent.getAddress()}"></span>
                   <div th:if="${session.isValidated}" class="collapse edit__menu"
                     th:id="'parent' + ${parent.getParentId()}">
-                    <input class="form-control edit__options" th:value="${parent.getAddress()}" name="address"
+                    <input class="form-control edit__options shadowed-light" th:value="${parent.getAddress()}" name="address"
                       type="text">
                   </div>
                 </td>
@@ -66,13 +66,13 @@
                   <span th:each="kid : ${interfaceKidService.findKidByParentId(parent.getParentId())}"
                     th:text="${kid.getKidName()} + ' &nbsp; &nbsp; '"></span>
                 </td>
-                <td class="w-20" th:if="${session.isValidated}">
-                  <button type="button" class="btn btn-warning" data-bs-toggle="collapse"
+                <td class="w-15" th:if="${session.isValidated}">
+                  <button type="button" class="text-uppercase btn btn-warning" data-bs-toggle="collapse"
                     th:href="'#parent' + ${parent.getParentId()}" aria-expanded="false">Edit</button>
-                  <button type="button" th:onclick="pageTransition()" class="btn btn-danger">Delete</button>
+                  <button type="button" th:onclick="pageTransition()" class="text-uppercase btn btn-danger">Delete</button>
                   <div class="collapse" th:id="'parent' + ${parent.getParentId()}">
                     <button type="submit" th:onclick="pageTransition()"
-                      class="btn btn-success button__save">SAVE</button>
+                      class="text-uppercase btn btn-success button__save">SAVE</button>
                   </div>
                 </td>
               </form>

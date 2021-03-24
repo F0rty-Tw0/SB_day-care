@@ -112,10 +112,12 @@ public class PageController {
         myLogin.setValidated(adminUsername, adminPassword);
         if (myLogin.isValidated()) {
             isValidated = true;
+            Employee admin = interfaceEmployeeService.findEmployeeByRole("admin");
             session.setAttribute("isValidated", isValidated);
-            session.setAttribute("interfaceEmployeeService", interfaceEmployeeService);
+            session.setAttribute("admin", admin);
             return "redirect:/admin";
         } else {
+            isValidated = false;
             model.addAttribute("wrongCredentials", true);
             return "login/login";
         }

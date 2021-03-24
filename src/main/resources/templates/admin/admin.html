@@ -17,21 +17,21 @@
                 </div>
                 <form class="row g-3" th:action="@{/admin}" method="POST">
                     <div class="col-7 pb-5">
-                        <img src="/images/parents.webp" class="img-fluid" alt="...">
+                        <img src="/images/parents.webp" class="img-fluid" alt="Two parents sitting with their two kids">
                     </div>
                     <div class="col-5">
                         <div class="container w-75 pt-5">
-                            <label for="inputMotherName" class="form-label text__color-gray">Mother's Name</label>
+                            <label for="inputMotherName" class="form-label text__color-gray">Mother's Name:</label>
                             <input type="text" class="form-control" id="inputMotherName" placeholder="Maria Kaalas">
-                            <label for="inputFatherName" class="form-label text__color-gray">Father's Name</label>
+                            <label for="inputFatherName" class="form-label text__color-gray">Father's Name:</label>
                             <input type="text" class="form-control" id="inputFatherName" placeholder="John Smith">
-                            <label for="inputAddress" class="form-label text__color-gray">Address</label>
+                            <label for="inputAddress" class="form-label text__color-gray">Address:</label>
                             <input required type="text" class="form-control" id="inputAddress"
                                 placeholder="1234 Main St">
-                            <label for="inputPhone" class="form-label text__color-gray">Phone Number</label>
+                            <label for="inputPhone" class="form-label text__color-gray">Phone Number:</label>
                             <input required type="tel" class="form-control" id="inputPhone" placeholder="+45689428" pattern="[0-9]{8}">
                             <button type="submit" name="submit"
-                                class="btn btn-primary mt-5 login__button shadowed w-100">Next</button>
+                                class="text-uppercase btn btn-primary mt-5 login__button shadowed w-100">Next</button>
                         </div>
                     </div>
                 </form>
