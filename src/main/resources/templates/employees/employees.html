@@ -22,7 +22,8 @@
               </div>
               <form method="POST">
                 <div class="modal-body">
-                  <img src="/images/employee.webp" class="img-fluid" alt="Three day care employees sitting with 3 babies">
+                  <img src="/images/employee.webp" class="img-fluid"
+                    alt="Three day care employees sitting with 3 babies">
                   <label for="empName" class="form-label text__color-gray">Emplyoee Name:</label>
                   <input required class="form-control shadowed-light" name="empName" type="text"
                     placeholder="Waterpuddle">
@@ -72,7 +73,7 @@
             <tr th:each="employee : ${myEmployees}">
               <form>
                 <th class="w-5" scope="row">
-                  <span th:text="${employee.getEmpId()}"></span>
+                  <span th:text="${myEmployees.indexOf(employee)+1}"></span>
                   <div th:if="${session.isValidated}">
                     <input class="d-none" th:value="${employee.getEmpId()}" name="id" type="number">
                   </div>

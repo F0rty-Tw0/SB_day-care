@@ -25,7 +25,7 @@
             <tr th:each="parent : ${myParents}">
               <form>
                 <th class="w-3" scope="row">
-                  <span th:text="${parent.getParentId()}"></span>
+                  <span th:text="${myParents.indexOf(parent)}+1"></span>
                   <div th:if="${session.isValidated}">
                     <input class="d-none" th:value="${parent.getParentId()}" name="id" type="number">
                   </div>

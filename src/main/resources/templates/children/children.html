@@ -25,7 +25,7 @@
             <tr th:each="kid : ${myKids}">
               <form>
                 <th class="w-5" scope="row">
-                  <span th:text="${kid.getKidId()}"></span>
+                  <span th:text="${myKids.indexOf(kid)+1}"></span>
                   <div th:if="${session.isValidated}">
                     <input class="d-none" th:value="${kid.getKidId()}" name="id" type="number">
                   </div>
