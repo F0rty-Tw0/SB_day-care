@@ -50,7 +50,9 @@ public class ScheduleCRUD implements InterfaceSchedule {
   // DELETE
   @Override
   public boolean deleteSchedule(int schId) {
+    String updateEmp = "UPDATE employees SET empSchId = 1 WHERE empSchId=?";
     String sql = "DELETE FROM schedules WHERE schId=?";
+    jdbcTemplate.update(updateEmp, schId);
     return jdbcTemplate.update(sql, schId) >= 0;
   };
 

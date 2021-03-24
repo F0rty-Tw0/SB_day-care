@@ -57,7 +57,11 @@ public class GroupCRUD implements InterfaceGroup {
     // DELETE
     @Override
     public boolean deleteGroup(int grpId) {
+        String updateEmp = "UPDATE employees SET empGrpId = 2 WHERE empGrpId=?";
+        String updateKids = "UPDATE kids SET kidGrpId = 2 WHERE kidGrpId=?";
         String sql = "DELETE FROM xgroups WHERE grpId=?";
+        jdbcTemplate.update(updateEmp, grpId);
+        jdbcTemplate.update(updateKids, grpId);
         return jdbcTemplate.update(sql, grpId) >= 0;
     };
 
