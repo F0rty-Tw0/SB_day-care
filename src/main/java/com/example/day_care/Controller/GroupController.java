@@ -40,20 +40,19 @@ public class GroupController {
 
   @PostMapping("/groups")
   public String addNewGroup(@ModelAttribute Group group) {
-    System.out.println(group.getGrpName());
+    interfaceGroupService.addGroup(group);
     return "redirect:/groups";
   }
 
   @PostMapping("/editGroup")
   public String editGroup(@ModelAttribute Group group) {
-    System.out.println(group.getGrpId());
-    System.out.println(group.getGrpName());
+    interfaceGroupService.editGroup(group.getGrpId(), group);
     return "redirect:/groups";
   }
 
   @PostMapping("/deleteGroup")
   public String deleteGroup(@ModelAttribute Group group) {
-    System.out.println(group.getGrpId());
+    interfaceGroupService.deleteGroup(group.getGrpId());
     return "redirect:/groups";
   }
 

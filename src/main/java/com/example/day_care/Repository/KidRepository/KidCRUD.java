@@ -55,7 +55,7 @@ public class KidCRUD implements InterfaceKid {
     // UPDATE
     @Override
     public Kid editKid(int kidId, Kid myKid) {
-        String sql = "UPDATE kids SET kidName, kidAge, kidParentId, kidGrpId WHERE kidId=?";
+        String sql = "UPDATE kids SET kidName=?, kidAge=?, kidParentId=?, kidGrpId=? WHERE kidId=?";
         jdbcTemplate.update(sql, myKid.getKidName(), myKid.getKidAge(), myKid.getKidParentId(), myKid.getKidGrpId(), kidId);
         return null;
     };

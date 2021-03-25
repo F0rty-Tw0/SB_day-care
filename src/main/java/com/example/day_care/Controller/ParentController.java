@@ -33,26 +33,19 @@ public class ParentController {
 
   @PostMapping("/editParent")
   public String editParent(@ModelAttribute Parent parent) {
-    System.out.println(parent.getParentId());
-    System.out.println(parent.getMomName());
-    System.out.println(parent.getDadName());
-    System.out.println(parent.getPhoneNumber());
-    System.out.println(parent.getAddress());
+    interfaceParentService.editParent(parent.getParentId(), parent);
     return "redirect:/parents";
   }
 
   @PostMapping("/deleteParent")
   public String deleteParent(@ModelAttribute Parent parent) {
-    System.out.println(parent.getParentId());
+    interfaceParentService.deleteParent(parent.getParentId());
     return "redirect:/parents";
   }
 
   @PostMapping("/admin")
   public String submitAdminForm(Model model, @ModelAttribute Parent parent, HttpSession session) {
-    System.out.println(parent.getMomName());
-    System.out.println(parent.getDadName());
-    System.out.println(parent.getAddress());
-    System.out.println(parent.getPhoneNumber());
+    interfaceParentService.addParent(parent);
     model.addAttribute("lastParent", interfaceParentService.sellectLastParent().getParentId());
     return "admin/addKid";
   }

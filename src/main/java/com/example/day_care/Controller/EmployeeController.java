@@ -40,28 +40,19 @@ public class EmployeeController {
 
   @PostMapping("/employees")
   public String addNewEmployee(@ModelAttribute Employee employee) {
-    System.out.println(employee.getEmpName());
-    System.out.println(employee.getEmpSchId());
-    System.out.println(employee.getEmpPhoneNr());
-    System.out.println(employee.getEmpRole());
-    System.out.println(employee.getEmpGrpId());
+    interfaceEmployeeService.addEmployee(employee);
     return "redirect:/employees";
   }
 
   @PostMapping("/editEmployee")
   public String editEmployee(@ModelAttribute Employee employee) {
-    System.out.println(employee.getEmpId());
-    System.out.println(employee.getEmpName());
-    System.out.println(employee.getEmpSchId());
-    System.out.println(employee.getEmpPhoneNr());
-    System.out.println(employee.getEmpRole());
-    System.out.println(employee.getEmpGrpId());
+    interfaceEmployeeService.editEmployee(employee.getEmpId(), employee);
     return "redirect:/employees";
   }
 
   @PostMapping("/deleteEmployee")
   public String deleteEmployee(@ModelAttribute Employee employee) {
-    System.out.println(employee.getEmpId());
+    interfaceEmployeeService.deleteEmployee(employee.getEmpId());
     return "redirect:/employees";
   }
 }

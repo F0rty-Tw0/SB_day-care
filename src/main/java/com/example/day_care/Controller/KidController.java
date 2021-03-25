@@ -43,46 +43,32 @@ public class KidController {
 
   @PostMapping("/children")
   public String addNewKid(@ModelAttribute Kid kid) {
-    System.out.println(kid.getKidName());
-    System.out.println(kid.getKidAge());
-    System.out.println(kid.getKidParentId());
-    System.out.println(kid.getKidGrpId());
+    interfaceKidService.addKid(kid);
     return "redirect:/children";
   }
 
   @PostMapping("/editChildren")
   public String editKid(@ModelAttribute Kid kid) {
-    System.out.println(kid.getKidId());
-    System.out.println(kid.getKidName());
-    System.out.println(kid.getKidAge());
-    System.out.println(kid.getKidParentId());
-    System.out.println(kid.getKidGrpId());
+    interfaceKidService.editKid(kid.getKidId(), kid);
     return "redirect:/children";
   }
 
   @PostMapping("/deleteChildren")
   public String deleteKid(@ModelAttribute Kid kid) {
-    System.out.println(kid.getKidId());
+    interfaceKidService.deleteKid(kid.getKidId());
     return "redirect:/children";
   }
 
   @PostMapping("/addKid")
   public String addNewKidForm(Model model, @ModelAttribute Kid kid) {
-    System.out.println(kid.getKidName());
-    System.out.println(kid.getKidAge());
-    System.out.println(kid.getKidParentId());
-    System.out.println(kid.getKidGrpId());
+    interfaceKidService.addKid(kid);
     model.addAttribute("lastParent", interfaceParentService.sellectLastParent().getParentId());
     return "admin/addKid";
   }
 
-  
-    @PostMapping("/success")
-    public String addNewParentForm(@ModelAttribute Kid kid) {
-        System.out.println(kid.getKidName());
-        System.out.println(kid.getKidAge());
-        System.out.println(kid.getKidParentId());
-        System.out.println(kid.getKidGrpId());
-        return "admin/success";
-    }
+  @PostMapping("/success")
+  public String addNewParentForm(@ModelAttribute Kid kid) {
+    interfaceKidService.addKid(kid);
+    return "admin/success";
+  }
 }
