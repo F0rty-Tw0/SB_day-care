@@ -40,13 +40,14 @@
                 </ul>
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a th:if="${!session.isValidated}"
+                        <a th:if="${session.isValidated == null || !session.isValidated}"
                             th:attr="class=${active.equals('login')? 'active' : 'text__color-blue'} + ' nav-link'"
                             System.out.println(String.valueOf(session.toString())); th:href="@{/login}" tabindex="-1"
                             aria-disabled="true">Log
                             In</a>
-                        <form th:if="${session.isValidated && session.admin != null}" th:action="@{/}" method="POST">
-                            <span class="text__color-gray" th:text="'('+${session.admin.getEmpName()}+')'"></span>
+                        <form th:if="${(session.isValidated != null && session.isValidated)}" th:action="@{/}"
+                            method="POST">
+                            <span th:if="${session.admin != null}"class="text__color-gray" th:text="'('+${session.admin.getEmpName()}+')'"></span>
                             <button type="submit" name="submit"
                                 th:attr="class=${active.equals('login')? 'active' : 'text__color-blue'} + ' nav-link logout_button d-inline'">Log
                                 out</button>

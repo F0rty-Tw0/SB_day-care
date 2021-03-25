@@ -8,7 +8,9 @@
       <div th:include="shared/navbar :: navbar (active='parents')" />
 
       <div class="container">
-        <h1 class="page__header">Displaying all the Parents</h1>
+        <h1 class="page__header">Displaying all the Parents <a th:href="@{/admin}" type="button"
+            th:if="${session.isValidated}" class="text-uppercase btn btn-success">add new
+            parent</a></h1>
         <table class="table table-hover table-borderless shadowed">
           <thead>
             <tr>
@@ -23,43 +25,43 @@
           </thead>
           <tbody>
             <tr th:each="parent : ${myParents}">
-              <form>
+              <form th:action="@{/editParent}" method="POST">
                 <th class="w-3" scope="row">
                   <span th:text="${myParents.indexOf(parent)}+1"></span>
                   <div th:if="${session.isValidated}">
-                    <input class="d-none" th:value="${parent.getParentId()}" name="id" type="number">
+                    <input class="d-none" th:value="${parent.getParentId()}" name="parentId" type="number">
                   </div>
                 </th>
                 <td class="w-15">
                   <span th:text="${parent.getMomName()}"></span>
                   <div th:if="${session.isValidated}" class="collapse edit__menu"
                     th:id="'parent' + ${parent.getParentId()}">
-                    <input class="form-control edit__options shadowed-light" th:value="${parent.getMomName()}" name="momName"
-                      type="text">
+                    <input class="form-control edit__options shadowed-light" th:value="${parent.getMomName()}"
+                      name="momName" type="text">
                   </div>
                 </td>
                 <td class="w-15">
                   <span th:text="${parent.getDadName()}"></span>
                   <div th:if="${session.isValidated}" class="collapse edit__menu"
                     th:id="'parent' + ${parent.getParentId()}">
-                    <input class="form-control edit__options shadowed-light" th:value="${parent.getDadName()}" name="dadName"
-                      type="text">
+                    <input class="form-control edit__options shadowed-light" th:value="${parent.getDadName()}"
+                      name="dadName" type="text">
                   </div>
                 </td>
                 <td class="w-12">
                   <span th:text="${parent.getPhoneNumber()}"></span>
                   <div th:if="${session.isValidated}" class="collapse edit__menu"
                     th:id="'parent' + ${parent.getParentId()}">
-                    <input class="form-control edit__options shadowed-light" th:value="${parent.getPhoneNumber()}" name="phone"
-                      type="tel" pattern="[0-9]{8}">
+                    <input class="form-control edit__options shadowed-light" th:value="${parent.getPhoneNumber()}"
+                      name="phoneNumber" type="tel" pattern="[0-9]{8}">
                   </div>
                 </td>
                 <td class="w-20">
                   <span th:text="${parent.getAddress()}"></span>
                   <div th:if="${session.isValidated}" class="collapse edit__menu"
                     th:id="'parent' + ${parent.getParentId()}">
-                    <input class="form-control edit__options shadowed-light" th:value="${parent.getAddress()}" name="address"
-                      type="text">
+                    <input class="form-control edit__options shadowed-light" th:value="${parent.getAddress()}"
+                      name="address" type="text">
                   </div>
                 </td>
                 <td class="w-15">
@@ -69,10 +71,10 @@
                 <td class="w-15" th:if="${session.isValidated}">
                   <button type="button" class="text-uppercase btn btn-warning" data-bs-toggle="collapse"
                     th:href="'#parent' + ${parent.getParentId()}" aria-expanded="false">Edit</button>
-                  <button type="button" th:onclick="pageTransition()" class="text-uppercase btn btn-danger">Delete</button>
+                  <button type="submit" class="text-uppercase btn btn-danger"
+                    th:formaction="@{/deleteParent}">Delete</button>
                   <div class="collapse" th:id="'parent' + ${parent.getParentId()}">
-                    <button type="submit" th:onclick="pageTransition()"
-                      class="text-uppercase btn btn-success button__save">SAVE</button>
+                    <button type="submit" class="text-uppercase btn btn-success button__save">SAVE</button>
                   </div>
                 </td>
               </form>
