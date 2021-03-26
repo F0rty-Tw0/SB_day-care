@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 @Entity
 public class Schedule {
   @Id
-  String schId;
+  int schId;
   String schTime;
 
   public String getSchTime() {
@@ -18,11 +18,11 @@ public class Schedule {
   }
 
   @javax.persistence.Id
-  public String getSchId() {
+  public int getSchId() {
     return schId;
   }
 
-  public void setSchId(String schId) {
+  public void setSchId(int schId) {
     this.schId = schId;
   }
 }
