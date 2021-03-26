@@ -7,8 +7,54 @@
     <div class="page">
       <div th:include="shared/navbar :: navbar (active='children')" />
       <div class="container">
-        <h1 class="page__header">Displaying all the Children</h1>
-        <table class="table table-hover table-borderless pb-5">
+        <h1 class="page__header">Displaying all the Children <button type="button" data-bs-toggle="modal"
+            data-bs-target="#addKid" aria-expanded="false" th:if="${session.isValidated}"
+            class="text-uppercase btn btn-success">add new
+            child</button></h1>
+        <div class="modal fade" id="addKid" tabindex="-1" data-bs-backdrop="static" aria-labelledby="childLabel"
+          aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title text__color-blue" id="childLabel">Enter the Child details:</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <form th:action="@{/children}" method="POST">
+                <div class="modal-body">
+                  <img src="/images/children.webp" class="img-fluid"
+                    alt="Three day care employees sitting with 3 babies">
+                  <label for="kidName" class="form-label text__color-gray">Child Name:</label>
+                  <input required class="form-control shadowed-light" name="kidName" type="text"
+                    placeholder="Jessica Alba">
+
+                  <label for="kidAge" class="form-label text__color-gray">Child Age:</label>
+                  <input required class="form-control shadowed-light" name="kidAge" type="number" min="1" max="9"
+                    placeholder="3">
+
+                  <label for="kidGrpId" class="form-label text__color-gray">Group:</label>
+                  <select required name="kidGrpId" class="form-control shadowed-light form-select"
+                    aria-label="Group Selector">
+                    <option th:each="group : ${myGroups}" th:text="${group.getGrpName()}"
+                      th:value="${group.getGrpId()}"></option>
+                  </select>
+                  <label for="kidParentId" class="form-label text__color-gray">Parents:</label>
+                  <select required name="kidParentId" class="form-control shadowed-light form-select"
+                    aria-label="Parents Selector">
+                    <option th:each="parent : ${myParents}"
+                      th:text="${parent.getMomName() + ' & '+ parent.getDadName()}" th:value="${parent.getParentId()}">
+                    </option>
+                  </select>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-warning">Add Child</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <table class="table table-hover table-borderless shadowed">
           <thead>
             <tr>
               <th scope="col">#</th>
@@ -17,16 +63,73 @@
               <th scope="col">Age:</th>
               <th scope="col">Mother's Name:</th>
               <th scope="col">Father's Name:</th>
+              <th th:if="${session.isValidated}" scope="col">Edit Children:</th>
+
             </tr>
           </thead>
           <tbody>
             <tr th:each="kid : ${myKids}">
-              <th scope="row" th:text="${kid.getKidId()}"></th>
-              <td th:text="${kid.getKidName()}"></td>
-              <td th:text="${interfaceGroupService.findGroupById(kid.getKidGrpId()).getGrpName()}"></td>
-              <td th:text="${kid.getKidAge()}"></td>
-              <td th:text="${interfaceParentService.findParentById(kid.getKidParentId()).getMomName()}"></td>
-              <td th:text="${interfaceParentService.findParentById(kid.getKidParentId()).getDadName()}"></td>
+              <form th:action="@{/editChildren}" method="POST">
+                <th class="w-5" scope="row">
+                  <span th:text="${myKids.indexOf(kid)+1}"></span>
+                  <div th:if="${session.isValidated}">
+                    <input class="d-none" th:value="${kid.getKidId()}" name="kidId" type="number">
+                  </div>
+                </th>
+                <td class="w-20">
+                  <span th:text="${kid.getKidName()}"></span>
+                  <div th:if="${session.isValidated}" class="collapse edit__menu"
+                    th:id="'children' + ${kid.getKidId()}">
+                    <input class="form-control edit__options shadowed-light" th:value="${kid.getKidName()}"
+                      name="kidName" type="text">
+                  </div>
+                </td>
+                <td class="w-15">
+                  <span th:text="${interfaceGroupService.findGroupById(kid.getKidGrpId()).getGrpName()}"></span>
+                  <div th:if="${session.isValidated}" class="collapse edit__menu"
+                    th:id="'children' + ${kid.getKidId()}">
+                    <select name="kidGrpId" class="form-control edit__options shadowed-light form-select"
+                      aria-label="Group selector">
+                      <option th:each="group : ${interfaceGroupService.viewAllGroups()}" th:text="${group.getGrpName()}"
+                        th:selected="${interfaceGroupService.findGroupById(kid.getKidGrpId()).getGrpName().equals(group.getGrpName())}"
+                        th:value="${group.getGrpId()}"></option>
+                    </select>
+                  </div>
+                </td>
+                <td class="w-10">
+                  <span th:text="${kid.getKidAge()}"></span>
+                  <div th:if="${session.isValidated}" class="collapse edit__menu"
+                    th:id="'children' + ${kid.getKidId()}">
+                    <input class="form-control edit__options shadowed-light" th:value="${kid.getKidAge()}" name="kidAge"
+                      type="number" min="1" max="9">
+                  </div>
+                </td>
+                <td>
+                  <span th:text="${interfaceParentService.findParentById(kid.getKidParentId()).getMomName()}"></span>
+                  <div th:if="${session.isValidated}" class="collapse edit__menu"
+                    th:id="'children' + ${kid.getKidId()}">
+                    <select name="kidParentId"
+                      class="form-control edit__options shadowed-light form-select form__parents-sellect"
+                      aria-label="Group selector">
+                      <option th:each="parent : ${myParents}"
+                        th:text="${parent.getMomName() + ' & '+ parent.getDadName()}"
+                        th:selected="${interfaceParentService.findParentById(kid.getKidParentId()).getMomName().equals(parent.getMomName())}"
+                        th:value="${parent.getParentId()}"></option>
+                    </select>
+                  </div>
+                </td>
+                <td th:text="${interfaceParentService.findParentById(kid.getKidParentId()).getDadName()}"></td>
+
+                <td th:if="${session.isValidated}">
+                  <button type="button" class="text-uppercase btn btn-warning" data-bs-toggle="collapse"
+                    th:href="'#children' + ${kid.getKidId()}" aria-expanded="false">Edit</button>
+                  <button type="submit" class="text-uppercase btn btn-danger"
+                    th:formaction="@{/deleteChildren}">Delete</button>
+                  <div class="collapse" th:id="'children' + ${kid.getKidId()}">
+                    <button type="submit" class="text-uppercase btn btn-success button__save">SAVE</button>
+                  </div>
+                </td>
+              </form>
             </tr>
           </tbody>
         </table>

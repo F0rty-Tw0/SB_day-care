@@ -12,8 +12,10 @@ public interface InterfaceEmployeeService {
     // READ
     public Employee findEmployeeById(int empId);
 
+    public Employee findEmployeeByRole(String empRole);
+
     public List<Employee> findEmployeeByGrpId(int empGrpId);
-    
+
     public List<Employee> viewAllEmployees();
 
     // UPDATE

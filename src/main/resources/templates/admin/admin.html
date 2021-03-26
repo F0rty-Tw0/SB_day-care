@@ -6,8 +6,35 @@
     <body>
         <div class="page">
             <div th:include="shared/navbar :: navbar (active='admin')" />
-            <div id="container">
-                IM ADMIN
+            <div class="container admin__container shadowed mt-5">
+                <div class="row">
+                    <div class="col-7">
+                        <h1 class="page__header ms-4">Registration Form</h1>
+                    </div>
+                    <div class="col-5">
+                        <h1 class="page__header-blue">Parent Information</h1>
+                    </div>
+                </div>
+                <form class="row g-3" th:action="@{/admin}" method="POST">
+                    <div class="col-7 pb-5">
+                        <img src="/images/parents.webp" class="img-fluid" alt="Two parents sitting with their two kids">
+                    </div>
+                    <div class="col-5">
+                        <div class="container w-75 pt-5">
+                            <label for="momName" class="form-label text__color-gray">Mother's Name:</label>
+                            <input type="text" class="form-control" name="momName" placeholder="Maria Kaalas">
+                            <label for="dadName" class="form-label text__color-gray">Father's Name:</label>
+                            <input type="text" class="form-control" name="dadName" placeholder="John Smith">
+                            <label for="address" class="form-label text__color-gray">Address:</label>
+                            <input required type="text" class="form-control" name="address" placeholder="1234 Main St">
+                            <label for="phoneNumber" class="form-label text__color-gray">Phone Number:</label>
+                            <input required type="tel" class="form-control" name="phoneNumber" placeholder="+45689428"
+                                pattern="[0-9]{8}">
+                            <button type="submit" name="submit"
+                                class="text-uppercase btn btn-primary mt-5 login__button shadowed w-100">Next</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </body>

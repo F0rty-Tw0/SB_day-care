@@ -17,8 +17,8 @@ public class KidCRUD implements InterfaceKid {
     // CREATE
     @Override
     public Kid addKid(Kid myKid) {
-        String sql = "INSERT INTO kids(kidName, kidAge, kidParentId) VALUES(?,?,?)";
-        jdbcTemplate.update(sql, myKid.getKidName(), myKid.getKidAge(), myKid.getKidParentId());
+        String sql = "INSERT INTO kids(kidName, kidAge, kidParentId, kidGrpId) VALUES(?,?,?,?)";
+        jdbcTemplate.update(sql, myKid.getKidName(), myKid.getKidAge(), myKid.getKidParentId(), myKid.getKidGrpId());
         return null;
     };
 
@@ -55,8 +55,8 @@ public class KidCRUD implements InterfaceKid {
     // UPDATE
     @Override
     public Kid editKid(int kidId, Kid myKid) {
-        String sql = "UPDATE kids SET kidName, kidAge, kidParentId WHERE kidId=?";
-        jdbcTemplate.update(sql, myKid.getKidName(), myKid.getKidAge(), myKid.getKidParentId(), kidId);
+        String sql = "UPDATE kids SET kidName=?, kidAge=?, kidParentId=?, kidGrpId=? WHERE kidId=?";
+        jdbcTemplate.update(sql, myKid.getKidName(), myKid.getKidAge(), myKid.getKidParentId(), myKid.getKidGrpId(), kidId);
         return null;
     };
 

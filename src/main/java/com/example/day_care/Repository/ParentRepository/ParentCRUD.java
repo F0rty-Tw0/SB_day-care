@@ -33,7 +33,7 @@ public class ParentCRUD implements InterfaceParent {
     };
 
     @Override
-    public Parent sellectLastParent() { 
+    public Parent sellectLastParent() {
         String sql = "SELECT * FROM parents ORDER BY parentId DESC LIMIT 1";
         RowMapper<Parent> rowMapper = new BeanPropertyRowMapper<>(Parent.class);
         Parent myParent = jdbcTemplate.queryForObject(sql, rowMapper);
@@ -59,7 +59,9 @@ public class ParentCRUD implements InterfaceParent {
     // DELETE
     @Override
     public boolean deleteParent(int parentId) {
+        String updateKids = "DELETE FROM kids WHERE kidParentId=?";
         String sql = "DELETE FROM parents WHERE parentId=?";
+        jdbcTemplate.update(updateKids, parentId);
         return jdbcTemplate.update(sql, parentId) >= 0;
     };
 }

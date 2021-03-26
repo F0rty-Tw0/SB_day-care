@@ -9,10 +9,10 @@
 
             <form action="#" th:action="@{/login}" th:object="${myLogin}" method="post">
                 <div class="login__container">
-                    <h1 class="login__wrong-login" th:object="${wrongCredentials}"
-                        th:if="${wrongCredentials}">
+                    <h1 class="login__wrong-login" th:if="${session.wrongCredentials}">
                         You entered wrong credentials</h1>
-                    <h1 class="text__color-blue" th:object="${wrongCredentials}" th:if="${wrongCredentials == null}">Log
+                    <h1 class="text__color-blue"
+                        th:if="${session.wrongCredentials == null || !session.wrongCredentials}">Log
                         in
                         with your credentials</h1>
                     <div class="input-group">
@@ -26,7 +26,7 @@
                                 type="password" autocomplete="off">
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary login__button">Submit</button>
+                    <button type="submit" class="text-uppercase btn btn-primary login__button shadowed">Submit</button>
                 </div>
             </form>
             <footer th:include="shared/footer :: footer" class="mt-5" />
