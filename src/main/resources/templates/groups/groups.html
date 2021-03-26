@@ -56,7 +56,7 @@
                 <th class="w-5" scope="row">
                   <span th:text="${myGroups.indexOf(group)-1}"></span>
                   <div th:if="${session.isValidated}">
-                    <input class="d-none" th:value="${group.getGrpId()}" name="grpId" type="number">
+                    <input th:value="${group.getGrpId()}" name="grpId" type="hidden">
                   </div>
                 </th>
                 <td class="w-20">
