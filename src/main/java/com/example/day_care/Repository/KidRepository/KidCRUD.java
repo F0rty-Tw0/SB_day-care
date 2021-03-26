@@ -17,8 +17,8 @@ public class KidCRUD implements InterfaceKid {
     // CREATE
     @Override
     public Kid addKid(Kid myKid) {
-        String sql = "INSERT INTO kids(kidName, kidAge, kidParentId) VALUES(?,?,?)";
-        jdbcTemplate.update(sql, myKid.getKidName(), myKid.getKidAge(), myKid.getKidParentId());
+        String sql = "INSERT INTO kids(kidName, kidAge, kidParentId, kidGrpId) VALUES(?,?,?,?)";
+        jdbcTemplate.update(sql, myKid.getKidName(), myKid.getKidAge(), myKid.getKidParentId(), myKid.getKidGrpId());
         return null;
     };
 
@@ -32,7 +32,21 @@ public class KidCRUD implements InterfaceKid {
     };
 
     @Override
-    public List<Kid> viewAllKids() {
+    public List<Kid> findKidByParentId(int kidParentId) {
+        String sql = "SELECT * FROM kids WHERE kidParentId=?";
+        RowMapper<Kid> rowMapper = new BeanPropertyRowMapper<>(Kid.class);
+        return jdbcTemplate.query(sql, rowMapper, kidParentId);
+    };
+    
+    @Override
+    public List<Kid> findKidByGrpId(int kidGrpId) {
+        String sql = "SELECT * FROM kids WHERE kidGrpId=?";
+        RowMapper<Kid> rowMapper = new BeanPropertyRowMapper<>(Kid.class);
+        return jdbcTemplate.query(sql, rowMapper, kidGrpId);
+    };
+
+    @Override
+    public List<Kid> viewAllKids() {       
         String sql = "SELECT * FROM kids";
         RowMapper<Kid> rowMapper = new BeanPropertyRowMapper<>(Kid.class);
         return jdbcTemplate.query(sql, rowMapper);
@@ -41,8 +55,8 @@ public class KidCRUD implements InterfaceKid {
     // UPDATE
     @Override
     public Kid editKid(int kidId, Kid myKid) {
-        String sql = "UPDATE kids SET kidName, kidAge, kidParentId WHERE kidId=?";
-        jdbcTemplate.update(sql, myKid.getKidName(), myKid.getKidAge(), myKid.getKidParentId(), kidId);
+        String sql = "UPDATE kids SET kidName=?, kidAge=?, kidParentId=?, kidGrpId=? WHERE kidId=?";
+        jdbcTemplate.update(sql, myKid.getKidName(), myKid.getKidAge(), myKid.getKidParentId(), myKid.getKidGrpId(), kidId);
         return null;
     };
 

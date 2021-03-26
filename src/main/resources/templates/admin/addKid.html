@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+
+    <head th:include="shared/head :: head (pageTitle='Admin Page (Add Kid)')" />
+
+    <body>
+        <div class="page">
+            <div th:include="shared/navbar :: navbar (active='admin')" />
+            <div class="container admin__container shadowed mt-5">
+                <div class="row">
+                    <div class="col-7">
+                        <h1 class="page__header ms-4">Registration Form</h1>
+                    </div>
+                    <div class="col-5">
+                        <h1 class="page__header-blue">Children Information</h1>
+                    </div>
+                </div>
+                <form class="row g-3" th:action="@{/success}" method="POST">
+                    <div class="col-7 pb-5">
+                        <img src="/images/children.webp" class="img-fluid" alt="Kids playing with toys">
+                    </div>
+                    <div class="col-5">
+                        <div class="container w-75 pt-5">
+                            <label for="kidName" class="form-label text__color-gray">Children's Name</label>
+                            <input required type="text" class="form-control" name="kidName"
+                                placeholder="Nikolai Levander">
+                            <label for="kidAge" class="form-label text__color-gray">Children's Age</label>
+                            <input min="1" max="9" required type="number" class="form-control" name="kidAge"
+                                placeholder="3">
+                            <input type="number" class="d-none" name="kidParentId" th:value="${lastParent}">
+                            <input type="number" class="d-none" name="kidGrpId" th:value="2">
+                            <button type="button"
+                                class="text-uppercase btn btn-primary mt-5 login__button shadowed w-100"
+                                data-bs-toggle="modal" data-bs-target="#confirmationModal">
+                                Add Another Kid
+                            </button>
+
+                            <div class="modal fade" id="confirmationModal" tabindex="-1"
+                                aria-labelledby="confirmationModalLabel" data-bs-backdrop="static" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title text__color-blue text-center"
+                                                id="confirmationModalLabel">Are you sure you want to add
+                                                one more child?</h4>
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="text-uppercase btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" th:formaction="@{/addKid}" name="submit"
+                                                class="text-uppercase btn btn-warning">Confirm</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p class="text__color-gray mt-2">Press this if you have to register multiple kids.</p>
+                            <button value="success" type="submit" name="submit"
+                                class="text-uppercase btn btn-primary mt-5 login__button shadowed w-100">Complete
+                                Registration</button>
+                        </div>
+
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+    </body>
+
+</html>

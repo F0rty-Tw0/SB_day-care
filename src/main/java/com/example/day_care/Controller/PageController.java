@@ -1,12 +1,13 @@
 package com.example.day_care.Controller;
 
-import java.util.List;
-import com.example.day_care.Model.Kid;
-import com.example.day_care.Service.KidService.InterfaceKidService;
+import javax.servlet.http.HttpSession;
+
+import com.example.day_care.Model.Employee;
+import com.example.day_care.Service.EmployeeService.InterfaceEmployeeService;
 import com.example.day_care.Service.LoginService.LoginService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,78 +17,52 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class PageController {
     @Autowired
-    JdbcTemplate jdbcTemplate;
-    @Autowired
     private Environment environment;
     @Autowired
-    private InterfaceKidService interfaceKidService;
-
-    // Admin state
-    private boolean isValidated;
-
-    @GetMapping("/error")
-    public String Error() {
-        return "error";
-    }
-    // jdbcTemplate.execute("CREATE TABLE kids (" + "kidId SERIAL, kidName VARCHAR(50), kidAge INT)");
+    private InterfaceEmployeeService interfaceEmployeeService;
 
     @GetMapping("/")
     public String Index(Model model) {
-        List<Kid> kidList = interfaceKidService.viewAllKids();
-        model.addAttribute("myKids", kidList);
-
-        // Adrian's comment
-
-
-        // Kid kid = new Kid();
-        // kid.setKidAge(2);
-        // kid.setKidName("Jessica Alba");
-        // jdbcTemplate.update("INSERT INTO kids(kidName, kidAge) VALUES (?,?)",
-        // kid.getKidName(), kid.getKidAge());
-
-        // String name = "Maria";
-        // String sql = "SELECT kidId, kidAge, kidName FROM kids WHERE kidName =
-        // \""+name+"\"";
-        // List<Kid> listKid = jdbcTemplate.query(sql,
-        // BeanPropertyRowMapper.newInstance(Kid.class));
-
-        // listKid.forEach((kids) -> System.out.println(kids.getKidName()));
         return "home/index";
     }
 
+    @PostMapping("/")
+    public String adminLogOut(HttpSession session) {
+        session.setAttribute("isValidated", false);
+        return "redirect:/";
+    }
+
     @GetMapping("/login")
-    public String Login(Model model) {
+    public String login(Model model, HttpSession session) {
         LoginService login = new LoginService();
+        session.setAttribute("wrongCredentials", false);
         model.addAttribute("myLogin", login);
         return "login/login";
     }
 
     @PostMapping("/login")
-    public String LoginPost(Model model, @ModelAttribute("myLogin") LoginService myLogin) {
+    public String loginPost(@ModelAttribute("myLogin") LoginService myLogin, HttpSession session) {
         String adminUsername = environment.getProperty("admin.userName");
         String adminPassword = environment.getProperty("admin.userPassword");
         myLogin.setValidated(adminUsername, adminPassword);
         if (myLogin.isValidated()) {
-            isValidated = true;
+            Employee admin = interfaceEmployeeService.findEmployeeByRole("admin");
+            session.setAttribute("isValidated", true);
+            session.setAttribute("admin", admin);
             return "redirect:/admin";
         } else {
-            model.addAttribute("wrongCredentials", true);
+            session.setAttribute("isValidated", false);
+            session.setAttribute("wrongCredentials", true);
             return "login/login";
         }
     }
 
     @GetMapping("/admin")
-    public String Admin() {
-        if (isValidated) {
+    public String displayAdmin(Model model, HttpSession session) {
+        if (session.getAttribute("isValidated") != null && session.getAttribute("isValidated").equals(true)) {
             return "admin/admin";
         } else {
             return "redirect:/login";
         }
-    }
-
-    @PostMapping("/admin")
-    public String AdminLogOut() {
-        isValidated = false;
-        return "redirect:/";
     }
 }

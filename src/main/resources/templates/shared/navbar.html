@@ -1,0 +1,61 @@
+<div th:fragment="navbar (active)">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a th:attr="class=${active.equals('index')? 'active' : 'text__color-blue'} + ' navbar-brand'"
+                th:href="@{/}">Day
+                Care</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="animation start-home"></div>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a th:onclick="pageTransition()"
+                            th:attr="class=${active.equals('children')? 'active' : 'text__color-blue'} + ' nav-link'"
+                            aria-current="page" th:href="@{/children}">Children</a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:onclick="pageTransition()"
+                            th:attr="class=${active.equals('parents')? 'active' : 'text__color-blue'} + ' nav-link'"
+                            th:href="@{/parents}">Parents</a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:onclick="pageTransition()"
+                            th:attr="class=${active.equals('groups')? 'active' : 'text__color-blue'} + ' nav-link'"
+                            th:href="@{/groups}">Groups</a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:onclick="pageTransition()"
+                            th:attr="class=${active.equals('employees')? 'active' : 'text__color-blue'} + ' nav-link'"
+                            th:href="@{/employees}">Employees</a>
+                    </li>
+                    <li th:if="${session.isValidated}" class="nav-item">
+                        <a th:onclick="pageTransition()"
+                            th:attr="class=${active.equals('admin')? 'active' : 'text__color-blue'} + ' nav-link'"
+                            th:href="@{/admin}">Admin</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a th:if="${session.isValidated == null || !session.isValidated}"
+                            th:attr="class=${active.equals('login')? 'active' : 'text__color-blue'} + ' nav-link'"
+                            System.out.println(String.valueOf(session.toString())); th:href="@{/login}" tabindex="-1"
+                            aria-disabled="true">Log
+                            In</a>
+                        <form th:if="${(session.isValidated != null && session.isValidated)}" th:action="@{/}"
+                            method="POST">
+                            <span th:if="${session.admin != null}"class="text__color-gray" th:text="'('+${session.admin.getEmpName()}+')'"></span>
+                            <button type="submit" name="submit"
+                                th:attr="class=${active.equals('login')? 'active' : 'text__color-blue'} + ' nav-link logout_button d-inline'">Log
+                                out</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="loading"></div>
+</div>
