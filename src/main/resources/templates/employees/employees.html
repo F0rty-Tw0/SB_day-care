@@ -39,7 +39,7 @@
                   <input required class="form-control shadowed-light" name="empPhoneNr" type="tel"
                     placeholder="+45689428" pattern="[0-9]{8}">
 
-                  <input class="d-none" name="empRole" type="text" th:value="employee">
+                  <input name="empRole" type="hidden" th:value="employee">
 
                   <label for="empGrpId" class="form-label text__color-gray">Group:</label>
                   <select required name="empGrpId" class="form-control shadowed-light form-select"
@@ -74,7 +74,7 @@
                 <th class="w-5" scope="row">
                   <span th:text="${myEmployees.indexOf(employee)+1}"></span>
                   <div th:if="${session.isValidated}">
-                    <input class="d-none" th:value="${employee.getEmpId()}" name="empId" type="number">
+                    <input th:value="${employee.getEmpId()}" name="empId" type="hidden">
                   </div>
                 </th>
                 <td class="w-20">
@@ -104,7 +104,7 @@
                     th:id="'employee' + ${employee.getEmpId()}">
                     <input class="form-control edit__options shadowed-light" th:value="${employee.getEmpPhoneNr()}"
                       name="empPhoneNr" type="tel" pattern="[0-9]{8}">
-                    <input class="d-none" name="empRole" type="text" th:value="${employee.getEmpRole()}">
+                    <input name="empRole" type="hidden" th:value="${employee.getEmpRole()}">
                   </div>
                 </td>
                 <td class="w-20">

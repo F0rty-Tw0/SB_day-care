@@ -27,8 +27,8 @@
                             <label for="kidAge" class="form-label text__color-gray">Children's Age</label>
                             <input min="1" max="9" required type="number" class="form-control" name="kidAge"
                                 placeholder="3">
-                            <input type="number" class="d-none" name="kidParentId" th:value="${lastParent}">
-                            <input type="number" class="d-none" name="kidGrpId" th:value="2">
+                            <input type="hidden" name="kidParentId" th:value="${lastParent}">
+                            <input type="hidden" name="kidGrpId" th:value="2">
                             <button type="button"
                                 class="text-uppercase btn btn-primary mt-5 login__button shadowed w-100"
                                 data-bs-toggle="modal" data-bs-target="#confirmationModal">
