@@ -36,7 +36,12 @@ public class EmployeeCRUD implements InterfaceEmployee {
     public Employee findEmployeeByRole(String empRole) {
         String sql = "SELECT * FROM employees WHERE empRole=?";
         RowMapper<Employee> rowMapper = new BeanPropertyRowMapper<>(Employee.class);
-        Employee myEmployee = jdbcTemplate.queryForObject(sql, rowMapper, empRole);
+        Employee myEmployee = new Employee();
+        try {
+            myEmployee = jdbcTemplate.queryForObject(sql, rowMapper, empRole);
+        } catch (Exception e) {
+            System.out.println("Error occured: " + e);
+        }
         return myEmployee;
     };
 

@@ -29,7 +29,7 @@
                 <th class="w-3" scope="row">
                   <span th:text="${myParents.indexOf(parent)}+1"></span>
                   <div th:if="${session.isValidated}">
-                    <input class="d-none" th:value="${parent.getParentId()}" name="parentId" type="number">
+                    <input th:value="${parent.getParentId()}" name="parentId" type="hidden">
                   </div>
                 </th>
                 <td class="w-15">

@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class ParentController {
-
   @Autowired
   private InterfaceKidService interfaceKidService;
   @Autowired
