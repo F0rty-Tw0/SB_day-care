@@ -28,7 +28,7 @@
                     placeholder="Jessica Alba">
 
                   <label for="kidAge" class="form-label text__color-gray">Child Age:</label>
-                  <input required class="form-control shadowed-light" name="kidAge" type="number" min="1" max="9"
+                  <input required class="form-control shadowed-light" name="kidAge" type="number" min="2" max="6"
                     placeholder="3">
 
                   <label for="kidGrpId" class="form-label text__color-gray">Group:</label>
@@ -101,7 +101,7 @@
                   <div th:if="${session.isValidated}" class="collapse edit__menu"
                     th:id="'children' + ${kid.getKidId()}">
                     <input class="form-control edit__options shadowed-light" th:value="${kid.getKidAge()}" name="kidAge"
-                      type="number" min="1" max="9">
+                      type="number" min="2" max="6">
                   </div>
                 </td>
                 <td>
@@ -124,7 +124,7 @@
                   <button type="button" class="text-uppercase btn btn-warning" data-bs-toggle="collapse"
                     th:href="'#children' + ${kid.getKidId()}" aria-expanded="false">Edit</button>
                   <button type="submit" class="text-uppercase btn btn-danger"
-                    th:formaction="@{/deleteChildren}">Delete</button>
+                    th:formaction="@{/deleteChildren}">Remove</button>
                   <div class="collapse" th:id="'children' + ${kid.getKidId()}">
                     <button type="submit" class="text-uppercase btn btn-success button__save">SAVE</button>
                   </div>

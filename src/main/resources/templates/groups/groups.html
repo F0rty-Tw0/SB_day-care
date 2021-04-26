@@ -90,7 +90,7 @@
                   <button type="button" class="text-uppercase btn btn-warning" data-bs-toggle="collapse"
                     th:href="'#group'+${group.getGrpId()}" aria-expanded="false">Edit</button>
                   <button type="submit" class="text-uppercase btn btn-danger"
-                    th:formaction="@{/deleteGroup}">Delete</button>
+                    th:formaction="@{/deleteGroup}">Remove</button>
                   <div class="collapse" th:id="'group'+${group.getGrpId()}">
                     <button type="submit" class="text-uppercase btn btn-success button__save">SAVE</button>
                   </div>

@@ -72,7 +72,7 @@
                   <button type="button" class="text-uppercase btn btn-warning" data-bs-toggle="collapse"
                     th:href="'#parent' + ${parent.getParentId()}" aria-expanded="false">Edit</button>
                   <button type="submit" class="text-uppercase btn btn-danger"
-                    th:formaction="@{/deleteParent}">Delete</button>
+                    th:formaction="@{/deleteParent}">Remove</button>
                   <div class="collapse" th:id="'parent' + ${parent.getParentId()}">
                     <button type="submit" class="text-uppercase btn btn-success button__save">SAVE</button>
                   </div>

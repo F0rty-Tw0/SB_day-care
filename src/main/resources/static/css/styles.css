@@ -57,6 +57,7 @@ body {
 /* NAVBAR */
 .navbar,
 .navbar-brand {
+	z-index: 555;
 	padding-top: 0;
 	padding-bottom: 0;
 }

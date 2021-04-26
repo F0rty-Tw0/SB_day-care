@@ -123,7 +123,7 @@
                   <button type="button" data-bs-toggle="collapse" th:href="'#employee' + ${employee.getEmpId()}"
                     aria-expanded="false" class="text-uppercase btn btn-warning">Edit</button>
                   <button type="submit" class="text-uppercase btn btn-danger"
-                    th:formaction="@{/deleteEmployee}">Delete</button>
+                    th:formaction="@{/deleteEmployee}">Remove</button>
                   <div class="collapse" th:id="'employee' + ${employee.getEmpId()}">
                     <button type="submit" class="text-uppercase btn btn-success button__save">SAVE</button>
                   </div>
